@@ -8,5 +8,5 @@
 	</parent>
 
 	<artifactId>dmoe-legacy-maven-archetype</artifactId>
-	<version>1.0.0</version>
+	<version>8.0.7</version>
 </project>

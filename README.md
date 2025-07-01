@@ -20,7 +20,6 @@ Once the archetype has been built and installed into the enterprise artifact rep
 - **legacy-decision.sh <projectName>** - Generates a v8 (legacy) decisions KJAR project.
 - **legacy-process.sh <projectName>** - Generates a v8 (legacy) process KJAR project.
 
-
 > [!IMPORTANT]  
 > Do not create a new project in the same working directory as the `bamoe-maven` repository was cloned into.  This will result in an incorrect Maven project file being generated.  Always create a separate folder to hold your BAMOE Maven projects!
 

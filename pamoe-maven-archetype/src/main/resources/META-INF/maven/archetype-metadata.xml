@@ -197,7 +197,7 @@
 		</requiredProperty>
 
 		<requiredProperty key="bamoeVersion">
-			<defaultValue>9.2.0-ibm-0004</defaultValue>
+			<defaultValue>9.2.1-ibm-0005</defaultValue>
 		</requiredProperty>
 
 		<!-- BAMOE Runtimes -->
@@ -215,7 +215,7 @@
 		</requiredProperty>
 
 		<requiredProperty key="quarkusRuntimeVersion">
-			<defaultValue>3.15.3</defaultValue>
+			<defaultValue>3.20.1</defaultValue>
 		</requiredProperty>
 
 		<requiredProperty key="quarkusPlugin">

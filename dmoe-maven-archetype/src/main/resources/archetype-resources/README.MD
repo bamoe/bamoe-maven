@@ -11,6 +11,42 @@ Once you have configured your local development environment, you need to perform
 mvn clean package -Pcontainer
 ```
 
+# How To Run Infrastructure Services using Docker Compose
+If you are currently running Docker or Rancher Desktop, you can utilize the docker compose configuration scripts in this section of the repository.  You can use `Docker Compose` to run the BAMOE images locally and the easiest way is to use `Rancher Desktop`.  Click [here](https://docs.rancherdesktop.io/getting-started/installation/) in order to get instructions on how to install Rancher Desktop in Docker mode.  
+
+## Setup for Decisions (DMOE)
+You will notice from the diagram below, there are only minimal infrastructure services required for DMOE applications.  You can choose to deploy `Maven` either a a container image or into your local `Artifactory` server as an off-line repository, or both.  If you wish to provide visual modeling capabilities to your developers or users, you can choose to deploy `BAMOE Canvas`.  No database or consoles are needed for decisions, however you can configure `Kafka` if your use cases include event-based decisioning.
+
+![BAMOE Architecture for Decisions](/doc/images/architecture-decision.png)
+
+## Setup for Process (PAMOE)
+You will notice from the diagram below, there are additional infrastructure services required for PAMOE applications.  You can choose to deploy `Maven` either a a container image or into your local `Artifactory` server as an off-line repository, or both.  If you wish to provide visual modeling capabilities to your developers or users, you can choose to deploy `BAMOE Canvas`.  PAMOE applications require a database for process instance persistence, and you can deploy the DB and it's associated services as a container.  In addition, you can make the `BAMOE Management Console` available to your users as a container.  Finally, you can configure `Kafka` if your use case include event-based decisioning.
+
+![BAMOE Architecture for Process](/doc/images/architecture-process.png)
+
+## Maven Repository
+For more information on how to properly setup Maven for local development, visit [Setting Up Maven](./maven/README.md).
+
+## Container Images
+All published BAMOE images can be pulled directly from Quay.io.  Here are the steps to follow:
+
+1.  To install the basic BAMOE services, use the supplied `docker-compose.yml` in the `docker-compose` folder:
+
+    ```bash
+    docker compose up [optional]<service-name>
+    ```
+
+    where `<service-name>` equals the name of the service in compose file (optional, leaving this off will install all services in the `docker-compose.yml` file.)
+
+    The images will start containers on the following ports:
+
+    | Service                   | Port @ localhost              |
+    | ------------------------- | ----------------------------- |
+    | BAMOE Maven               | [9011](http://localhost:9020) |
+    | BAMOE Canvas              | [9090](http://localhost:9090) |
+
+2.  This repository uses internal infrastructure services to make demonstrations easier.  In order to utilize full extended infrastructure services, please refer to the [BAMOE Setup Asset](https://github.com/blulas/bamoe-setup).
+
 #if (${runtime} == 'quarkus')
 # How To Run in Development Mode
 Quarkus comes with a built-in development mode, which means you can update the application sources, resources and configurations. The changes are automatically reflected in your running application. This is great to do development spanning UI and database as you see changes reflected immediately.  Dev mode enables hot deployment with background compilation, which means that when you modify your Java files or your resource files and refresh your browser these changes will automatically take effect. This works too for resource files like the configuration property file. The act of refreshing the browser triggers a scan of the workspace, and if any changes are detected the Java files are compiled, and the application is redeployed, then your request is serviced by the redeployed application. If there are any issues with compilation or deployment an error page will let you know.  To run the service in Quarkus Dev Mode, use the following command:
@@ -21,6 +57,24 @@ mvn clean package quarkus:dev
 
 Click [here](https://quarkus.io/guides/maven-tooling#dev-mode) for more information on Quarkus Dev Mode.
 #end
+
+# How To Test
+There are various methods used to test this application, including calling the published REST API's using a tool like `curl` or `postman`.  Included in the `src/test/resources` folder is a set of sub-folders with example test cases.  You can use this in order to expand your collection of test cases.  
+
+## Start with Swagger
+In order to determine which REST endpoints have been published by the application, you simply need to start your application, either in Quarkus Dev Mode or via the published container image, and then navigate to the published swagger page at:  [CVS DMOE Demo - Swagger Page](http://localhost:8080/q/swagger-ui/).  
+
+From there you will see the various published endpoints, which are coming from the `src/main/java/com/cvshealth/bblite/rules/l2l3validationrules/legacy/ServiceEndpoint.java` class.  The published swagger page provides the ability to `try it out` directly in the browser, for example:
+
+![Example Swagger Page](/doc/images/swagger-example.png)
+
+## Create Unit Tests
+You are free to use any unit testing framework you choose, so long as it can call Java or REST API methods programmatically, such as:
+
+- [Using Postman for Unit Testing](./src/test/resources/postman/README.md)
+- [Using Curl for Unit Testing](./src/test/resources/curl/README.md)
+- [Using Quarkus for Unit Testing](https://quarkus.io/guides/getting-started-testing)
+- [Using JUnit for Unit Testing](https://junit.org/junit5/docs/current/user-guide/)
 
 # Additional Information (*Appendicies*)
 This repository is focused on business automation using [**IBM Business Automation Manager Open Editions**](https://www.ibm.com/docs/en/ibamoe/9.2.x) products, specifically the IBM build of [**Kogito**](https://kogito.kie.org/) known as **IBM Decison Manager Open Edition**.

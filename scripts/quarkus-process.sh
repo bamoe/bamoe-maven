@@ -9,7 +9,7 @@ fi
 if [ -d "$1" ]; then rm -rf $1; fi
 
 # Run the archetype and generate the project structure
-mvn archetype:generate -B "-DarchetypeGroupId=com.ibm.bamoe.maven" "-DarchetypeArtifactId=pamoe-maven-archetype" "-DarchetypeVersion=1.1.0" \
+mvn archetype:generate -B "-DarchetypeGroupId=com.ibm.bamoe.maven" "-DarchetypeArtifactId=pamoe-maven-archetype" "-DarchetypeVersion=9.2.1" \
   "-DprojectName=$1" \
   "-DartifactId=$1" \
   "-Druntime=quarkus"
