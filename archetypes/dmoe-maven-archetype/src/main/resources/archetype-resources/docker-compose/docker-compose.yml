@@ -1,9 +1,0 @@
-services:
-
-  ${projectName}:
-    container_name: ${projectName}
-    image: ${containerImageRegistry}/${containerImageGroup}/${projectName}:${version}
-    ports:
-      - "${hostPort}:${containerPort}"
-    extra_hosts:
-      - "127.0.0.1:host-gateway"

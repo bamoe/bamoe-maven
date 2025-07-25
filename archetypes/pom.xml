@@ -2,17 +2,17 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 
-	<groupId>com.ibm.bamoe.maven</groupId>
-	<artifactId>bamoe-maven-archetypes</artifactId>
-	<version>2.0.0</version>
+	<groupId>com.ibm.bamoe.maven.archetypes</groupId>
+	<artifactId>bamoe-archetypes</artifactId>
+	<version>1.0.0</version>
 	<packaging>pom</packaging>
 
 	<modules>
-		<module>fact-model-maven-archetype</module>
-		<module>dmoe-maven-archetype</module>
-		<module>pamoe-maven-archetype</module>
-		<module>dmoe-legacy-maven-archetype</module>
-		<module>pamoe-legacy-maven-archetype</module>
+		<module>fact-model-archetype</module>
+		<module>decision-service-archetype</module>
+		<module>classic-decision-service-archetype</module>
+		<module>stp-orchestration-service-archetype</module>
+		<module>process-service-archetype</module>
 	</modules>
 
 	<properties>
