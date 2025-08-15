@@ -107,11 +107,11 @@
 		</requiredProperty>
 
 		<requiredProperty key="projectDescription">
-			<defaultValue>BAMOE STP Orchestration Service</defaultValue>
+			<defaultValue>STP Orchestration Service</defaultValue>
 		</requiredProperty>
 
 		<requiredProperty key="groupId">
-			<defaultValue>com.ibm.bamoe.myprojects</defaultValue>
+			<defaultValue>com.ibm.edu.bamoe</defaultValue>
 		</requiredProperty>
 
 		<requiredProperty key="artifactId">
@@ -163,11 +163,11 @@
 		</requiredProperty>
 
 		<requiredProperty key="package">
-			<defaultValue>com.ibm.bamoe.myprojects</defaultValue>
+			<defaultValue>com.ibm.edu.bamoe</defaultValue>
 		</requiredProperty>
 
 		<requiredProperty key="javaPackage">
-			<defaultValue>com/ibm/bamoe/myprojects</defaultValue>
+			<defaultValue>com/ibm/edu/bamoe</defaultValue>
 		</requiredProperty>
 
 		<requiredProperty key="processName">
@@ -214,8 +214,12 @@
 		</requiredProperty>
 
 		<!-- Sharable Fact Model -->
+		<requiredProperty key="useFactModel">
+			<defaultValue>false</defaultValue>
+		</requiredProperty>
+
 		<requiredProperty key="factModelGroupId">
-			<defaultValue>com.ibm.bamoe.myprojects</defaultValue>
+			<defaultValue>com.ibm.edu.bamoe</defaultValue>
 		</requiredProperty>
 
 		<requiredProperty key="factModelArtifactId">
@@ -259,7 +263,7 @@
 		</requiredProperty>
 
 		<requiredProperty key="dockerContainerImageGroup">
-			<defaultValue>bamoe-apps</defaultValue>
+			<defaultValue>bamoe-student-labs</defaultValue>
 		</requiredProperty>
 
 		<requiredProperty key="dockerContainerImageBuilder">
@@ -288,7 +292,7 @@
 		</requiredProperty>
 
 		<requiredProperty key="ocpContainerImageGroup">
-			<defaultValue>bamoe-apps</defaultValue>
+			<defaultValue>bamoe-student-labs</defaultValue>
 		</requiredProperty>
 
 		<requiredProperty key="ocpContainerImageBuilder">
@@ -296,7 +300,7 @@
 		</requiredProperty>
 
 		<requiredProperty key="ocpContainerImageRegistry">
-			<defaultValue>default-route-openshift-image-registry.apps.ocp.ibm.edu</defaultValue>
+			<defaultValue>default-route-openshift-image-registry.apps-crc.testing</defaultValue>
 		</requiredProperty>
 
 		<requiredProperty key="ocpDeploy">

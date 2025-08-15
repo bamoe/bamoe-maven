@@ -1,4 +1,4 @@
-# IBM Business Automation Manager Open Editions (BAMOE) - Maven Archetypes
+# IBM Business Automation Manager Open Editions (IBM BAMOE) - Maven Archetypes
 This repository contains custom [**Maven Archetypes**](https://maven.apache.org/guides/introduction/introduction-to-archetypes.html) for creating decision and process services based on [**IBM Business Automation Manager Open Edition**](https://www.ibm.com/docs/en/ibamoe/9.2.x) including legacy v8 as well as the latest cloud-native release of v9 (powered by Kogito).
 
 # Overview
@@ -20,10 +20,17 @@ In order to build the archetypes, you must perform a Maven `build` of the reposi
 Once the archetype has been built and installed into the enterprise artifact repository, navigate to the project folder for which you would like to create the new project, and run one of the following scripts, which are located in the `scripts` folder of this repository:
 
 - **create-fact-model.sh <projectName>** - Generates a reusable fact-model project.
-- **create-classic-decision-service.sh <projectName> <fact-model-name>** - Generates a v9 classic decision (DMOE) service project and associates the shared fact model.
-- **create-decision-service.sh <projectName> <fact-model-name>** - Generates a v9 Kogito decision (DMOE) service project and associates the shared fact model.
-- **create-stp-orchestration-service.sh <projectName> <fact-model-name>** - Generates a v9 statess STP Orchestration (DMOE) service project and associates the shared fact model.
-- **create-process-service.sh <projectName> <fact-model-name>** - Generates a v9 stateful process (PAMOE) service project and associates the shared fact model.
+- **create-classic-decision-service.sh <projectName>>** - Generates a v9 classic decision (DMOE) service project.
+- **create-decision-service.sh <projectName>** - Generates a v9 Kogito decision (DMOE) service project.
+- **create-stp-service.sh <projectName>** - Generates a v9 statess STP Orchestration (DMOE) service project.
+- **create-process-service.sh <projectName>>** - Generates a v9 stateful process (PAMOE) service project.
+
+> [!TIP]
+> You can always associate a sharable fact model as project dependency, by simply adding the following properties _(using -DpropertyName=value)_ to the archetype, as in the following exmaple:
+>
+> ```shell
+> ./archetype-script-file.sh <my-project-name> "-DuseFactModel=true -DfactModelGroupId=com.ibm.edu.bamoe -DfactModelArtifactId=my-fact-model -DfactModelVersion=1.0.0-SNAPSHOT"
+>```
 
 > [!IMPORTANT]  
 > Do not create a new project in the same working directory as the `bamoe-maven` repository was cloned into.  This will result in an incorrect Maven project file being generated.  Always create a separate folder to hold your BAMOE Maven projects!

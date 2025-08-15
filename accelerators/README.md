@@ -1,4 +1,4 @@
-# IBM Business Automation Manager Open Editions (BAMOE) - Maven Accelerators
+# IBM Business Automation Manager Open Editions (IBM BAMOE) - Maven Accelerators
 This repository contains custom [**Maven Accelerators**](https://www.ibm.com/docs/en/ibamoe/9.2.x?topic=started-initial-business-service-project-setup) for creating decision and process services based on [**IBM Business Automation Manager Open Edition**](https://www.ibm.com/docs/en/ibamoe/9.2.x).
 
 ## Overview

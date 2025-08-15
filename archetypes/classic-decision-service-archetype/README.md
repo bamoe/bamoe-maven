@@ -1,4 +1,4 @@
-# IBM Business Automation Manager Open Editions (BAMOE) - Classic Decision Service Archetype
+# IBM Business Automation Manager Open Editions (IBM BAMOE) - Classic Decision Service Archetype
 This repository contains a custom [**Maven Archetype**](https://maven.apache.org/guides/introduction/introduction-to-archetypes.html) used for creating cloud native decision services based on [**IBM Business Automation Manager Open Edition v9**](https://www.ibm.com/docs/en/ibamoe/9.2.x) classic mode vs using Kogito and packaged as a micro-service JAR. 
 
 # Using the Archetype
@@ -8,19 +8,19 @@ This custom Maven archetype can be run from the developer workstation, build ser
 Once the archetype has been built and installed into the enterprise artifact repository, navigate to the project folder for which you would like to create the new project, and run the following command (replacing the properties with the appropriate project value):
 
 ```shell
-mvn archetype:generate -B "-DarchetypeGroupId=com.ibm.bamoe.maven.archetypes" "-DarchetypeArtifactId=classic-decision-service-archetype" "-DarchetypeVersion=9.2.1" \
+mvn archetype:generate -B "-DarchetypeGroupId=com.ibm.edu.bamoe.maven.archetypes" "-DarchetypeArtifactId=classic-decision-service-archetype" "-DarchetypeVersion=9.2.1" \
   "-DprojectName=$1" \
-  "-DartifactId=$1" \
-  "-DfactModelArtifactId=$2"
+  "-DartifactId=$1" $2
 ```
 
-As an alternative to the Maven command listed above, you can also use the supplied script file `create-classic-decision-service.sh`, located in the `scripts` folder of this repository.  Typical syntax for the script would be as follows:
+As an alternative to the Maven command listed above, you can also use the supplied script file `create-classic-decision-service.sh`, located in the `scripts` folder of this repository.  Typical syntax for the script would be as follows _(the second example shows how to include a sharable fact model as a project dependency)_:
 
 ```shell
-./bamoe-maven/scripts/create-classic-decision-servce.sh my-classic-decision-service my-fact-model
+./bamoe-maven/scripts/create-classic-decision-servce.sh my-classic-decision-service
+./bamoe-maven/scripts/create-classic-decision-servce.sh my-classic-decision-service "-DuseFactModel=true -DfactModelGroupId=com.ibm.edu.bamoe -DfactModelArtifactId=my-fact-model -DfactModelVersion=1.0.0-SNAPSHOT"
 ```
 
-where the first parameter to the script is the name of the project and the second parameter is the name of your shared fact-model library.
+where the first parameter to the script is the name of the project.  You can optionally also include additional properties, as in the second example shown above.
 
 # Archetype Parameters
 The command above represents the minimal set of properties for the archetype. The `-B command line option` essentially tells the archetype to run in batch mode, rather than interactive mode, which prompts for each archetype property. Each archetype property has a specific default value, set in the archetype descriptor, in the event the property is not provided on the command line. The remainder of the parameters are listed in the following table. All parameters can be added to the call to the archetype by specifying `-DparameterName=parameterValue` on the command line. Please note that most parameters have default values and are not required.
@@ -32,11 +32,12 @@ The command above represents the minimal set of properties for the archetype. Th
 | archetypeArtifactId | String | Artifact ID for the archetype | None | Yes |
 | archetypeVersion | String | Version number for the archetype | None | Yes |
 | projectName | String | Project name (becomes decision service name) | untitled | No |
-| projectDescription | String | Project description | BAMOE Classic Decision Service | No |
-| groupId | String | Maven groupId for generated project | com.ibm.bamoe.myprojects | No |
+| projectDescription | String | Project description | Classic Decision Service | No |
+| groupId | String | Maven groupId for generated project | com.ibm.edu.bamoe | No |
 | artifactId | String | Maven artifactId for generated project | untitled | No |
 | version | String | Maven version for generated project | 1.0.0-SNAPSHOT | No |
-| factModelGroupId | String | Maven groupId for fact model project | com.ibm.bamoe.myprojects | No |
+| useFactModel | Boolean | Adds fact model GAV | false | No |
+| factModelGroupId | String | Maven groupId for fact model project | com.ibm.edu.bamoe | No |
 | factModelArtifactId | String | Maven artifactId for fact model project | untitled | No |
 | factModelVersion | String | Maven version for fact model project | 1.0.0-SNAPSHOT | No |
 | packaging | String | Maven build package target | jar | No |
@@ -63,16 +64,16 @@ The command above represents the minimal set of properties for the archetype. Th
 | quarkusPlugin | String | Quarkus Plugin | quarkus-maven-plugin | No |
 | dockerContainerImageBuild | Boolean | Build container image? | true | No |
 | dockerContainerImagePush | Boolean | Push container image? | false | No |
-| dockerContainerImageGroup | String | Group tag for container images | bamoe-apps | No |
+| dockerContainerImageGroup | String | Group tag for container images | bamoe-student-labs | No |
 | dockerContainerImageBuilder | String | Name of container image builder | jib | No |
 | dockerContainerImageRegistry | String | Name of the image repository | dev.local | No |
 | dockerHostPort | String | Name of the host port | 8080 | No |
 | dockerContainerPort | String | Name container port | 8080 | No |
 | ocpContainerImageBuild | Boolean | Build container image? | true | No |
 | ocpContainerImagePush | Boolean | Push container image? | true | No |
-| ocpContainerImageGroup | String | Group tag for container images | bamoe-apps | No |
+| ocpContainerImageGroup | String | Group tag for container images | bamoe-student-labs | No |
 | ocpContainerImageBuilder | String | Name of container image builder | jib | No |
-| ocpContainerImageRegistry | String | Name of the openshift image repository | default-route-openshift-image-registry.apps.ocp.ibm.edu | No |
+| ocpContainerImageRegistry | String | Name of the openshift image repository | default-route-openshift-image-registry.apps-crc.testing | No |
 | ocpDeploy | Boolean | Deploy to openshift? | true | No |
 | ocpRouteExpose | Boolean | Create external route? | true | No |
 | ocpRouteTLSTermination | String | OCP TLS termination setting | true | edge |

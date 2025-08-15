@@ -81,11 +81,11 @@
 		</requiredProperty>
 
 		<requiredProperty key="projectDescription">
-			<defaultValue>BAMOE Fact Model</defaultValue>
+			<defaultValue>Sharable Fact Model</defaultValue>
 		</requiredProperty>
 
 		<requiredProperty key="groupId">
-			<defaultValue>com.ibm.bamoe.myprojects</defaultValue>
+			<defaultValue>com.ibm.edu.bamoe</defaultValue>
 		</requiredProperty>
 
 		<requiredProperty key="artifactId">
@@ -101,11 +101,11 @@
 		</requiredProperty>
 
 		<requiredProperty key="javaPackage">
-			<defaultValue>com/ibm/bamoe/myprojects/model</defaultValue>
+			<defaultValue>com/ibm/edu/bamoe</defaultValue>
 		</requiredProperty>
 
 		<requiredProperty key="package">
-			<defaultValue>com.ibm.bamoe.myprojects.model</defaultValue>
+			<defaultValue>com.ibm.edu.bamoe</defaultValue>
 		</requiredProperty>
 
 		<requiredProperty key="sampleClassName">

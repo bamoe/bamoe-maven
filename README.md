@@ -1,4 +1,4 @@
-# IBM Business Automation Manager Open Editions (BAMOE) - Maven Asset
+# IBM Business Automation Manager Open Editions (IBM BAMOE) - Maven Asset
 This repository contains custom [**BAMOE Accelerators**](https://www.ibm.com/docs/en/ibamoe/9.2.x?topic=started-initial-business-service-project-setup) as well as custom [**Maven Archetypes**](https://maven.apache.org/guides/introduction/introduction-to-archetypes.html), both useful for creating decision and process services based on [**IBM Business Automation Manager Open Editions**](https://www.ibm.com/docs/en/ibamoe/9.2.x).
 
 ## Repository Modules

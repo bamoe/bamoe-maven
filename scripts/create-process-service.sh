@@ -1,7 +1,8 @@
 #!/bin/bash
 
 if [ "$1" == "" ]; then
-    echo "Please specify a project name..."
+    echo -e "\nUsage: create-process-service.sh <project-name> [-DpropertyName=propertyValue -DpropertyName=propertyValue] ..."
+    echo -e "  where <project-name> is required and -DpropertyName=propertyValue -DpropertyName=propertyValue are optional].\n"
     exit 1
 fi
 
@@ -9,7 +10,6 @@ fi
 if [ -d "$1" ]; then rm -rf $1; fi
 
 # Run the archetype and generate the project structure
-mvn archetype:generate -B "-DarchetypeGroupId=com.ibm.bamoe.maven.archetypes" "-DarchetypeArtifactId=process-service-archetype" "-DarchetypeVersion=9.2.1" \
+mvn archetype:generate -B "-DarchetypeGroupId=com.ibm.edu.bamoe.maven.archetypes" "-DarchetypeArtifactId=process-service-archetype" "-DarchetypeVersion=9.2.1" \
   "-DprojectName=$1" \
-  "-DartifactId=$1" \
-  "-DfactModelArtifactId=$2"
+  "-DartifactId=$1" $2

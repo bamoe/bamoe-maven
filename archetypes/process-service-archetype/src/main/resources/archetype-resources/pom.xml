@@ -34,11 +34,13 @@
 
 		<!-- Testing Properties -->
       	<skipTests>${skipTests}</skipTests>
+#if (${useFactModel} == 'true')
 
 		<!-- Shared Fact Model -->
       	<fact.model.groupId>${factModelGroupId}</fact.model.groupId>
       	<fact.model.artifactId>${factModelArtifactId}</fact.model.artifactId>
       	<fact.model.version>${factModelVersion}</fact.model.version>
+#end
 	</properties>
 
 	<!-- Dependency Management -->
@@ -72,6 +74,7 @@
 			<artifactId>bamoe-ilmt-compliance-quarkus-dmoe</artifactId>
 		</dependency>
 #end
+#if (${useFactModel} == 'true')
 
 		<!-- Sharable Fact Model -->
 		<dependency>
@@ -79,6 +82,7 @@
 			<artifactId>${fact.model.artifactId}</artifactId>
 			<version>${fact.model.version}</version>
 		</dependency>
+#end
 
 		<!-- Quarkus Dependencies -->
 		<dependency>
@@ -227,10 +231,16 @@
             <properties>
                 <quarkus.profile>dev</quarkus.profile>
             </properties>
+			
 			<dependencies>
 				<dependency>
 					<groupId>io.quarkus</groupId>
 					<artifactId>quarkus-jdbc-h2</artifactId>
+				</dependency>
+
+				<dependency>
+					<groupId>com.ibm.bamoe</groupId>
+					<artifactId>bamoe-quarkus-devui</artifactId>
 				</dependency>
 			</dependencies>
         </profile>
@@ -242,15 +252,15 @@
             </properties>
 
             <dependencies>
-                <dependency>
-                    <groupId>io.quarkus</groupId>
-                    <artifactId>quarkus-container-image-jib</artifactId>
-                </dependency>
-
 				<dependency>
 					<groupId>io.quarkus</groupId>
 					<artifactId>quarkus-jdbc-h2</artifactId>
 				</dependency>
+
+                <dependency>
+                    <groupId>io.quarkus</groupId>
+                    <artifactId>quarkus-container-image-jib</artifactId>
+                </dependency>
             </dependencies>
         </profile>
 
