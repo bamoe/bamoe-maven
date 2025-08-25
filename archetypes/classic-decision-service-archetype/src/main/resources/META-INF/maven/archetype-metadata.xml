@@ -202,6 +202,22 @@
 			<defaultValue>false</defaultValue>
 		</requiredProperty>
 
+		<requiredProperty key="annotationProductID">
+			<defaultValue>72984f114b54496a8a44be139154a988</defaultValue>
+		</requiredProperty>
+
+		<requiredProperty key="annotationProductName">
+			<defaultValue>IBM Process Automation Manager Open Edition</defaultValue>
+		</requiredProperty>
+
+		<requiredProperty key="annotationProductMetric">
+			<defaultValue>VIRTUAL_PROCESSOR_CORE</defaultValue>
+		</requiredProperty>
+
+		<requiredProperty key="annotationProductChargedContainers">
+			<defaultValue>All</defaultValue>
+		</requiredProperty>
+
 		<requiredProperty key="bamoeGroupId">
 			<defaultValue>com.ibm.bamoe</defaultValue>
 		</requiredProperty>
