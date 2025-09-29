@@ -4,27 +4,11 @@
 		<fileSet filtered="true" packaged="false" encoding="UTF-8">
 			<directory></directory>
 			<includes>
-				<include>.gitignore</include>
+				<include>gitignore</include>
 				<include>README.MD</include>
 				<include>**/*.md</include>
 				<include>LICENSE</include>
 				<include>pom.xml</include>
-			</includes>
-		</fileSet>
-
-		<fileSet filtered="false" packaged="false" encoding="UTF-8">
-			<directory>./</directory>
-			<includes>
-                <include>.gitignore</include>
-			</includes>
-		</fileSet>
-
-		<fileSet filtered="true" packaged="false" encoding="UTF-8">
-			<directory>.mvn</directory>
-			<includes>
-				<include>**/*.config</include>
-				<include>.gitkeep</include>
-				<include>.empty</include>
 			</includes>
 		</fileSet>
 
@@ -83,7 +67,7 @@
 				<include>.gitkeep</include>
 				<include>.empty</include>
 			</includes>
-		</fileSet>
+  		</fileSet>
 
 		<fileSet filtered="true" packaged="false" encoding="UTF-8">
 			<directory>src/test/resources</directory>
@@ -341,7 +325,7 @@
 		</requiredProperty>
 
 		<requiredProperty key="ocpContainerImageRegistry">
-			<defaultValue>default-route-openshift-image-registry.apps-crc.testing</defaultValue>
+			<defaultValue>TODO: Replace with your container registry URL</defaultValue>
 		</requiredProperty>
 
 		<requiredProperty key="ocpDeploy">

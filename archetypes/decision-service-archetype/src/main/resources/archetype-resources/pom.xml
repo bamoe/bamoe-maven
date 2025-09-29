@@ -189,12 +189,14 @@
             <activation>
                 <activeByDefault>true</activeByDefault>
             </activation>
-
+#if (${bamoeRuntime} == 'quarkus')
             <properties>
                 <quarkus.profile>dev</quarkus.profile>
             </properties>
+#end
         </profile>
 
+#if (${bamoeRuntime} == 'quarkus')
         <profile>
             <id>docker</id>
             <properties>
@@ -202,15 +204,15 @@
             </properties>
 
             <dependencies>
-#if (${bamoeRuntime} == 'quarkus')
                 <dependency>
                     <groupId>io.quarkus</groupId>
                     <artifactId>quarkus-container-image-jib</artifactId>
                 </dependency>
-#end
             </dependencies>
         </profile>
+#end
 
+#if (${bamoeRuntime} == 'quarkus')
         <profile>
             <id>openshift</id>
             <properties>
@@ -218,7 +220,6 @@
             </properties>
 
             <dependencies>
-#if (${bamoeRuntime} == 'quarkus')
                 <dependency>
                     <groupId>io.quarkus</groupId>
                     <artifactId>quarkus-container-image-jib</artifactId>
@@ -228,9 +229,9 @@
                     <groupId>io.quarkus</groupId>
                     <artifactId>quarkus-openshift</artifactId>
                 </dependency>
-#end
             </dependencies>
         </profile>
+#end
     </profiles>
 
 	<!-- Build Plugin Management -->

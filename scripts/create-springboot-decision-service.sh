@@ -14,4 +14,3 @@ mvn archetype:generate -B "-DarchetypeGroupId=com.ibm.techsales.bamoe.maven.arch
   "-DbamoeRuntime=springboot" \
   "-DprojectName=$1" \
   "-DartifactId=$1" 
-echo $1

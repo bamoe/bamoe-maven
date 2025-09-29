@@ -13,13 +13,11 @@ mvn clean package -Popenshift
 ```
 
 # How To Run in Development Mode
-Quarkus comes with a built-in development mode, which means you can update the application sources, resources and configurations. The changes are automatically reflected in your running application. This is great to do development spanning UI and database as you see changes reflected immediately.  Dev mode enables hot deployment with background compilation, which means that when you modify your Java files or your resource files and refresh your browser these changes will automatically take effect. This works too for resource files like the configuration property file. The act of refreshing the browser triggers a scan of the workspace, and if any changes are detected the Java files are compiled, and the application is redeployed, then your request is serviced by the redeployed application. If there are any issues with compilation or deployment an error page will let you know.  To run the service in Quarkus Dev Mode, use the following command:
+To run the service using Spring Boot, use the following command:
 
 ```shell
-mvn clean package quarkus:dev -Pdev
+mvn clean compile spring-boot:run -Pdev
 ```
-
-Click [here](https://quarkus.io/guides/maven-tooling#dev-mode) for more information on Quarkus Dev Mode.
 
 # How To Test
 There are various methods used to test this application's REST API endpoints.  Included in the `src/test/resources/rest` folder is a set of example test cases using the [VS Code REST Client](https://marketplace.visualstudio.com/items?itemName=humao.rest-client).  
@@ -31,7 +29,6 @@ In order to determine which REST endpoints have been published by the applicatio
 You are free to use any unit testing framework you choose, so long as it can call Java or REST API methods programmatically, such as:
 
 - [Using REST Client](https://marketplace.visualstudio.com/items?itemName=humao.rest-client)
-- [Using Quarkus for Unit Testing](https://quarkus.io/guides/getting-started-testing)
 - [Using JUnit for Unit Testing](https://junit.org/junit5/docs/current/user-guide/)
 
 # Additional Information (*Appendicies*)

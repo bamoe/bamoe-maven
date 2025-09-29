@@ -1,0 +1,9 @@
+services:
+
+  test-springboot-decision-service:
+    container_name: test-springboot-decision-service
+    image: dev.local/bamoe-apps/test-springboot-decision-service:1.0.0-SNAPSHOT
+    ports:
+      - "8080:8080"
+    extra_hosts:
+      - "127.0.0.1:host-gateway"
