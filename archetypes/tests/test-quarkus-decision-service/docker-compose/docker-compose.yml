@@ -1,9 +1,0 @@
-services:
-
-  test-quarkus-decision-service:
-    container_name: test-quarkus-decision-service
-    image: dev.local/bamoe-apps/test-quarkus-decision-service:1.0.0-SNAPSHOT
-    ports:
-      - "8080:8080"
-    extra_hosts:
-      - "127.0.0.1:host-gateway"
