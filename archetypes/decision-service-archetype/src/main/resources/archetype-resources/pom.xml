@@ -259,7 +259,7 @@
 			<plugin>
 				<groupId>org.kie.kogito</groupId>
 				<artifactId>kogito-maven-plugin</artifactId>
-				<version>${version.org.kie.kogito}</version>
+                <version>${bamoe.version}</version>
 				<executions>
 					<execution>
 						<phase>compile</phase>
@@ -272,7 +272,7 @@
 
 			<plugin>
 				<groupId>org.springframework.boot</groupId>
-				<artifactId>${springbootPlugin}n</artifactId>
+				<artifactId>${springbootPlugin}</artifactId>
 				<executions>
 					<execution>
 						<goals>
