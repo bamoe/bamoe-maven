@@ -1,5 +1,5 @@
-# ${projectDescription}
-This module contains an example `BAMOE Classic Decision Service`, using the class implementation model vs using Kogito and packaged as a micro-service JAR. 
+# Kogito Decision Service
+This module contains an example `BAMOE (Kogito) Decision Service`, using the using Kogito and packaged as a micro-service JAR. 
 
 # How To Build 
 Once you have configured your local development environment, you need to perform a Maven `build` of the repository.  This repository is built using `mvn clean install` by either the CI/CD pipeline or on a local developer workstation.  If deploying artifacts to an enterprise Maven repository, please use `mvn clean deploy`, which requires configuration of the `distributionManagement` section of your project's parent pom.xml.  This project is also configured to generate container images automatically by utilizing the `docker` or `openshift` profiles, as in the following examples:
@@ -25,7 +25,7 @@ Click [here](https://quarkus.io/guides/maven-tooling#dev-mode) for more informat
 There are various methods used to test this application's REST API endpoints.  Included in the `src/test/resources/rest` folder is a set of example test cases using the [VS Code REST Client](https://marketplace.visualstudio.com/items?itemName=humao.rest-client).  
 
 # Start with Swagger
-In order to determine which REST endpoints have been published by the application, you simply need to start your application, either in Quarkus Dev Mode or via the published container image, and then navigate to the published swagger page at:  [Swagger Page](http://localhost:8080/q/swagger-ui/).  
+In order to determine which REST endpoints have been published by the application, you simply need to start your application, either in Dev Mode or via the published container image, and then navigate to the published swagger page at:  [Swagger Page](http://localhost:8080/q/swagger-ui/).  
 
 # Create Unit Tests
 You are free to use any unit testing framework you choose, so long as it can call Java or REST API methods programmatically, such as:
@@ -42,7 +42,4 @@ This repository is focused on business automation using [**IBM Business Automati
 
 - [**Quarkus**](https://quarkus.io/) - Traditional Java stacks were engineered for monolithic applications with long startup times and large memory requirements in a world where the cloud, containers, and Kubernetes did not exist. Java frameworks needed to evolve to meet the needs of this new world.  Quarkus was created to enable Java developers to create applications for a modern, cloud-native world. Quarkus is a Kubernetes-native Java framework tailored for GraalVM and HotSpot, crafted from best-of-breed Java libraries and standards. The goal is to make Java the leading platform in Kubernetes and serverless environments while offering developers a framework to address a wider range of distributed application architectures.  You can find a useful introdution to this technology at [**Getting Started with Quarkus**](https://quarkus.io/get-started/).
 
-- [**Spring Boot**](https://spring.io/) - Spring makes programming Java quicker, easier, and safer for everybody. Spring’s focus on speed, simplicity, and productivity has made it the world's most popular Java framework.  Spring’s flexible libraries are trusted by developers all over the world. Spring delivers delightful experiences to millions of end-users every day.  Spring’s flexible and comprehensive set of extensions and third-party libraries let developers build almost any application imaginable.  Spring Boot transforms how you approach Java programming tasks, radically streamlining your experience. Spring Boot combines necessities such as an application context and an auto-configured, embedded web server to make microservice development a cinch. To go even faster, you can combine Spring Boot with Spring Cloud’s rich set of supporting libraries, servers, patterns, and templates, to safely deploy entire microservices-based architectures into the cloud, in record time.  You can find a useful introdution to this technology at [**Getting Started with Spring Boot**](https://spring.io/quickstart).
-
-
-
+- [**Spring Boot**](https://spring.io/projects/spring-boot/) - Spring Boot makes it easy to create stand-alone, production-grade Spring based Applications that you can "just run".  Spring makes programming Java quicker, easier, and safer for everybody. Spring’s focus on speed, simplicity, and productivity has made it the world's most popular Java framework. You can find a useful introdution to this technology at [**Getting Started with Spring Boot**](https://spring.io/quickstart).

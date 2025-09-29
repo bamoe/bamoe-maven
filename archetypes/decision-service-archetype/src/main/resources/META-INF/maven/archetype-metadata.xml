@@ -247,19 +247,19 @@
 		</requiredProperty>
 
 		<!-- Spring Boot Runtime -->
-		<requiredProperty key="sbRuntimeGroupId">
+		<requiredProperty key="springbootRuntimeGroupId">
 			<defaultValue>org.springframework.boot</defaultValue>
 		</requiredProperty>
 
-		<requiredProperty key="sbRuntimeArtifactId">
+		<requiredProperty key="springbootRuntimeArtifactId">
 			<defaultValue>spring-boot-dependencies</defaultValue>
 		</requiredProperty>
 
-		<requiredProperty key="sbRuntimeVersion">
+		<requiredProperty key="springbootRuntimeVersion">
 			<defaultValue>3.4.9</defaultValue>
 		</requiredProperty>
 
-		<requiredProperty key="sbPlugin">
+		<requiredProperty key="springbootPlugin">
 			<defaultValue>spring-boot-maven-plugin</defaultValue>
 		</requiredProperty>
 

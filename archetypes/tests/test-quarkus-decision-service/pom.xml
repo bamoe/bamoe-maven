@@ -3,79 +3,55 @@
     <modelVersion>4.0.0</modelVersion>
 
 	<!-- POM -->
-	<groupId>${groupId}</groupId>
-	<artifactId>${artifactId}</artifactId>
-	<version>${version}</version>
-	<packaging>${packaging}</packaging>
-	<name>${projectName}</name>
-	<description>${projectDescription}</description>
+	<groupId>com.ibm.techsales.bamoe</groupId>
+	<artifactId>test-quarkus-decision-service</artifactId>
+	<version>1.0.0-SNAPSHOT</version>
+	<packaging>jar</packaging>
+	<name>test-quarkus-decision-service</name>
+	<description>Kogito Decision Service</description>
 
     <!-- Global Properties -->
 	<properties>
 		<!-- General Properties -->
-		<project.build.sourceEncoding>${sourceEncoding}</project.build.sourceEncoding>
-		<project.reporting.outputEncoding>${sourceEncoding}</project.reporting.outputEncoding>
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
 
 		<!-- Java Properties -->
-		<java.version>${javaVersion}</java.version>
-		<jandex-maven-plugin.version>${jandexVersion}</jandex-maven-plugin.version>
+		<java.version>17</java.version>
+		<jandex-maven-plugin.version>1.2.1</jandex-maven-plugin.version>
 
 		<!-- Common Maven Plugins -->
 		<maven.compiler.source>${java.version}</maven.compiler.source>
 		<maven.compiler.target>${java.version}</maven.compiler.target>
-        <maven.compiler.parameters>${mavenCompilerParameters}</maven.compiler.parameters>
-		<maven.compiler.plugin.version>${mavenCompilerPluginVersion}</maven.compiler.plugin.version>
-        <maven.resources.plugin.version>${mavenResourcesPluginVersion}</maven.resources.plugin.version>
-		<maven.surefire.plugin.version>${mavenSurefirePluginVersion}</maven.surefire.plugin.version>
+        <maven.compiler.parameters>true</maven.compiler.parameters>
+		<maven.compiler.plugin.version>3.10.1</maven.compiler.plugin.version>
+        <maven.resources.plugin.version>3.2.0</maven.resources.plugin.version>
+		<maven.surefire.plugin.version>3.0.0-M7</maven.surefire.plugin.version>
 
 		<!-- BAMOE -->
-		<bamoe.version>${bamoeVersion}</bamoe.version>
-#if (${bamoeRuntime} == 'quarkus')
-		<bamoe.runtime.version>${quarkusRuntimeVersion}</bamoe.runtime.version>
-#end
-#if (${bamoeRuntime} == 'springboot')
-		<bamoe.runtime.version>${springbootRuntimeVersion}</bamoe.runtime.version>
-#end
+		<bamoe.version>9.3.0-ibm-0007</bamoe.version>
+		<bamoe.runtime.version>3.20.2.2</bamoe.runtime.version>
 
 		<!-- Testing Properties -->
-      	<skipTests>${skipTests}</skipTests>
-#if (${useFactModel} == 'true')
-
-		<!-- Shared Fact Model -->
-      	<fact.model.groupId>${factModelGroupId}</fact.model.groupId>
-      	<fact.model.artifactId>${factModelArtifactId}</fact.model.artifactId>
-      	<fact.model.version>${factModelVersion}</fact.model.version>
-#end
+      	<skipTests>true</skipTests>
 	</properties>
 
 	<!-- Dependency Management -->
 	<dependencyManagement>
 		<dependencies>
-#if (${bamoeRuntime} == 'quarkus')
 			<!-- BAMOE Quarkus Runtime -->
 			<dependency>
-				<groupId>${quarkusRuntimeGroupId}</groupId>
-				<artifactId>${quarkusRuntimeArtifactId}</artifactId>
+				<groupId>io.quarkus</groupId>
+				<artifactId>quarkus-bom</artifactId>
 				<version>${bamoe.runtime.version}</version>
 				<type>pom</type>
 				<scope>import</scope>
 			</dependency>
-#end
-#if (${bamoeRuntime} == 'springboot')
-			<!-- BAMOE Spring Boot Runtime -->
-			<dependency>
-				<groupId>${springbootRuntimeGroupIdGroupId}</groupId>
-				<artifactId>${springbootRuntimeArtifactId}</artifactId>
-				<version>${bamoe.runtime.version}</version>
-				<type>pom</type>
-				<scope>import</scope>
-			</dependency>
-#end
 
 			<!-- BAMOE -->
 			<dependency>
-				<groupId>${bamoeGroupId}</groupId>
-				<artifactId>${bamoeArtifactId}</artifactId>
+				<groupId>com.ibm.bamoe</groupId>
+				<artifactId>bamoe-bom</artifactId>
 				<version>${bamoe.version}</version>
 				<type>pom</type>
 				<scope>import</scope>
@@ -84,29 +60,6 @@
 	</dependencyManagement>
 
 	<dependencies>
-#if (${useILMT} == 'true')
-		<!-- IBM License Service (ILMT) Support -->
-		<dependency>
-			<groupId>com.ibm.bamoe</groupId>
-#if (${bamoeRuntime} == 'quarkus')
-			<artifactId>bamoe-ilmt-compliance-quarkus-dmoe</artifactId>
-#end
-#if (${bamoeRuntime} == 'springboot')
- 	     	<artifactId>bamoe-ilmt-compliance-spring-boot-dmoe</artifactId>
-#end
-		</dependency>
-#end
-#if (${useFactModel} == 'true')
-
-		<!-- Sharable Fact Model -->
-		<dependency>
-			<groupId>${fact.model.groupId}</groupId>
-			<artifactId>${fact.model.artifactId}</artifactId>
-			<version>${fact.model.version}</version>
-		</dependency>
-
-#end
-#if (${bamoeRuntime} == 'quarkus')
 		<!-- Quarkus Dependencies -->
 		<dependency>
 			<groupId>io.quarkus</groupId>
@@ -148,25 +101,6 @@
 			<artifactId>quarkus-junit5</artifactId>
 			<scope>test</scope>
 		</dependency>
-#end
-#if (${bamoeRuntime} == 'springboot')
-		<!-- Spring Boot Dependencies -->
-		<dependency>
-			<groupId>org.springframework.boot</groupId>
-			<artifactId>spring-boot-starter-actuator</artifactId>
-		</dependency>
-
-		<dependency>
-			<groupId>org.drools</groupId>
-			<artifactId>drools-rules-spring-boot-starter</artifactId>
-		</dependency>
-
-		<dependency>
-			<groupId>org.springframework.boot</groupId>
-			<artifactId>spring-boot-starter-test</artifactId>
-			<scope>test</scope>
-		</dependency>
-#end
 
 		<!-- Testing -->
 		<dependency>
@@ -202,12 +136,10 @@
             </properties>
 
             <dependencies>
-#if (${bamoeRuntime} == 'quarkus')
                 <dependency>
                     <groupId>io.quarkus</groupId>
                     <artifactId>quarkus-container-image-jib</artifactId>
                 </dependency>
-#end
             </dependencies>
         </profile>
 
@@ -218,7 +150,6 @@
             </properties>
 
             <dependencies>
-#if (${bamoeRuntime} == 'quarkus')
                 <dependency>
                     <groupId>io.quarkus</groupId>
                     <artifactId>quarkus-container-image-jib</artifactId>
@@ -228,7 +159,6 @@
                     <groupId>io.quarkus</groupId>
                     <artifactId>quarkus-openshift</artifactId>
                 </dependency>
-#end
             </dependencies>
         </profile>
     </profiles>
@@ -238,10 +168,9 @@
         <defaultGoal>install</defaultGoal>
         <finalName>${project.artifactId}</finalName>
         <plugins>
-#if (${bamoeRuntime} == 'quarkus')
             <plugin>
-                <groupId>${quarkusRuntimeGroupId}</groupId>
-                <artifactId>${quarkusPlugin}</artifactId>
+                <groupId>io.quarkus</groupId>
+                <artifactId>quarkus-maven-plugin</artifactId>
                 <version>${bamoe.runtime.version}</version>
                 <executions>
                     <execution>
@@ -253,34 +182,6 @@
                     </execution>
                 </executions>
             </plugin>
-#end
-#if (${bamoeRuntime} == 'springboot')
-			<plugin>
-				<groupId>org.kie.kogito</groupId>
-				<artifactId>kogito-maven-plugin</artifactId>
-				<version>${version.org.kie.kogito}</version>
-				<executions>
-					<execution>
-						<phase>compile</phase>
-						<goals>
-							<goal>generateModel</goal>
-						</goals>
-					</execution>
-				</executions>
-			</plugin>
-
-			<plugin>
-				<groupId>org.springframework.boot</groupId>
-				<artifactId>${springbootPlugin}n</artifactId>
-				<executions>
-					<execution>
-						<goals>
-							<goal>repackage</goal>
-						</goals>
-					</execution>
-				</executions>
-			</plugin>
-#end
 
 			<plugin>
 				<groupId>org.jboss.jandex</groupId>
