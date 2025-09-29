@@ -33,7 +33,7 @@ The command above represents the minimal set of properties for the archetype. Th
 | archetypeVersion | String | Version number for the archetype | None | Yes |
 | projectName | String | Project name (becomes decision service name) | untitled | No |
 | projectDescription | String | Project description | Sharable Fact Model | No |
-| groupId | String | Maven groupId for generated project | com.ibm.edu.bamoe | No |
+| groupId | String | Maven groupId for generated project | com.ibm.techsales.bamoe | No |
 | artifactId | String | Maven artifactId for generated project | untitled | No |
 | version | String | Maven version for generated project | 1.0.0-SNAPSHOT | No |
 | packaging | String | Maven build package target | jar | No |

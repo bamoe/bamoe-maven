@@ -19,16 +19,6 @@
 			</includes>
 		</fileSet>
 
-		<!-- This folder contains the .mvn files for the project -->
-		<fileSet filtered="true" packaged="false" encoding="UTF-8">
-			<directory>.mvn</directory>
-			<includes>
-				<include>**/*.config</include>
-				<include>.gitkeep</include>
-				<include>.empty</include>
-			</includes>
-		</fileSet>
-
 		<!-- This folder contains the Java source files for the project -->
 		<fileSet filtered="true" packaged="false" encoding="UTF-8">
 			<directory>src/main/java</directory>
@@ -101,11 +91,11 @@
 		</requiredProperty>
 
 		<requiredProperty key="javaPackage">
-			<defaultValue>com/ibm/edu/bamoe</defaultValue>
+			<defaultValue>com/ibm/techsales/bamoe</defaultValue>
 		</requiredProperty>
 
 		<requiredProperty key="package">
-			<defaultValue>com.ibm.edu.bamoe</defaultValue>
+			<defaultValue>com.ibm.techsales.bamoe</defaultValue>
 		</requiredProperty>
 
 		<requiredProperty key="sampleClassName">
