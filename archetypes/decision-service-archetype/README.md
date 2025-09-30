@@ -1,5 +1,5 @@
 # IBM Business Automation Manager Open Editions (IBM BAMOE) - Kogito Decision Service Archetype
-This repository contains a custom [**Maven Archetype**](https://maven.apache.org/guides/introduction/introduction-to-archetypes.html) used for creating cloud native decision services based on [**IBM Business Automation Manager Open Edition v9**](https://www.ibm.com/docs/en/ibamoe/9.2.x) using Kogito and packaged as a micro-service JAR. 
+This repository contains a custom [**Maven Archetype**](https://maven.apache.org/guides/introduction/introduction-to-archetypes.html) used for creating cloud native decision services based on [**IBM Business Automation Manager Open Edition v9**](https://www.ibm.com/docs/en/ibamoe/9.3.x) using Kogito and packaged as a micro-service JAR. 
 
 # Using the Archetype
 This custom Maven archetype can be run from the developer workstation, build server, or any other environment where a command line tool can be used, assuming that environment has access to the enterprise Maven repository for which the archetype has been installed or deployed. Once installed into Maven, the archetype can be run either via the command line or directly in Business Central.
@@ -28,13 +28,13 @@ As an alternative to the Maven command listed above, you can also use the suppli
 ### Quarkus Runtime
 ```shell
 ./bamoe-maven/scripts/create-quarkus-decision-servce.sh my-decision-service
-./bamoe-maven/scripts/create-quarkus-decision-servce.sh my-decision-service "-DuseFactModel=true -DfactModelGroupId=com.ibm.edu.bamoe -DfactModelArtifactId=my-fact-model -DfactModelVersion=1.0.0-SNAPSHOT"
+./bamoe-maven/scripts/create-quarkus-decision-servce.sh my-decision-service "-DuseFactModel=true -DfactModelGroupId=com.ibm.techsales.bamoe -DfactModelArtifactId=my-fact-model -DfactModelVersion=1.0.0-SNAPSHOT"
 ```
 
 ### Spring Boot Runtime
 ```shell
 ./bamoe-maven/scripts/create-springboot-decision-servce.sh my-decision-service
-./bamoe-maven/scripts/create-springboot-decision-servce.sh my-decision-service "-DuseFactModel=true -DfactModelGroupId=com.ibm.edu.bamoe -DfactModelArtifactId=my-fact-model -DfactModelVersion=1.0.0-SNAPSHOT"
+./bamoe-maven/scripts/create-springboot-decision-servce.sh my-decision-service "-DuseFactModel=true -DfactModelGroupId=com.ibm.techsales.bamoe -DfactModelArtifactId=my-fact-model -DfactModelVersion=1.0.0-SNAPSHOT"
 
 where the first parameter to the script is the name of the project.  You can optionally also include additional properties, as in the second example shown above.
 

@@ -15,12 +15,19 @@ import org.kie.api.event.rule.DebugRuleRuntimeEventListener;
 import org.kie.api.runtime.KieContainer;
 import org.kie.api.runtime.KieSession;
 
-import jakarta.enterprise.context.ApplicationScoped;
-
 import ${package}.model.rules.RuleResults;
 import ${package}.model.rules.ExecutionDuration;
 
+#if (${bamoeRuntime} == 'quarkus')
+import jakarta.enterprise.context.ApplicationScoped;
+
 @ApplicationScoped
+#end
+#if (${bamoeRuntime} == 'springboot')
+import org.springframework.web.context.annotation.ApplicationScope;
+
+@ApplicationScope
+#end
 public class ${serviceClassName} {
 
     private static final Logger logger = LoggerFactory.getLogger(${serviceClassName}.class);

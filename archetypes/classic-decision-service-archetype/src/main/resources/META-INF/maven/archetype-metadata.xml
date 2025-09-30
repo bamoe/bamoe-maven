@@ -4,27 +4,11 @@
 		<fileSet filtered="true" packaged="false" encoding="UTF-8">
 			<directory></directory>
 			<includes>
-				<include>.gitignore</include>
+				<include>gitignore</include>
 				<include>README.MD</include>
 				<include>**/*.md</include>
 				<include>LICENSE</include>
 				<include>pom.xml</include>
-			</includes>
-		</fileSet>
-
-		<fileSet filtered="false" packaged="false" encoding="UTF-8">
-			<directory>./</directory>
-			<includes>
-                <include>.gitignore</include>
-			</includes>
-		</fileSet>
-
-		<fileSet filtered="true" packaged="false" encoding="UTF-8">
-			<directory>.mvn</directory>
-			<includes>
-				<include>**/*.config</include>
-				<include>.gitkeep</include>
-				<include>.empty</include>
 			</includes>
 		</fileSet>
 
@@ -126,7 +110,7 @@
 		</requiredProperty>
 
 		<requiredProperty key="groupId">
-			<defaultValue>com.ibm.edu.bamoe</defaultValue>
+			<defaultValue>com.ibm.techsales.bamoe</defaultValue>
 		</requiredProperty>
 
 		<requiredProperty key="artifactId">
@@ -178,13 +162,14 @@
 		</requiredProperty>
 
 		<requiredProperty key="package">
-			<defaultValue>com.ibm.edu.bamoe</defaultValue>
+			<defaultValue>com.ibm.techsales.bamoe</defaultValue>
 		</requiredProperty>
 
 		<requiredProperty key="javaPackage">
-			<defaultValue>com/ibm/edu/bamoe/</defaultValue>
+			<defaultValue>com/ibm/techsales/bamoe</defaultValue>
 		</requiredProperty>
 
+		<!-- Classic Mode -->
 		<requiredProperty key="serviceClassName">
 			<defaultValue>ClassicRuleService</defaultValue>
 		</requiredProperty>
@@ -194,19 +179,35 @@
 		</requiredProperty>
 
 		<requiredProperty key="restPath">
-			<defaultValue>/bamoe-student-labs-classic-decision-service</defaultValue>
+			<defaultValue>/bamoe-classic-decision-service</defaultValue>
+		</requiredProperty>
+
+		<requiredProperty key="applicationClassName">
+			<defaultValue>Application</defaultValue>
 		</requiredProperty>
 
 		<!-- BAMOE -->
+		<requiredProperty key="bamoeSubscription">
+			<defaultValue>dmoe</defaultValue>
+		</requiredProperty>
+
 		<requiredProperty key="useILMT">
 			<defaultValue>false</defaultValue>
 		</requiredProperty>
 
-		<requiredProperty key="annotationProductID">
+		<requiredProperty key="dmoeAnotationProductID">
+			<defaultValue>46b14c7f2f894218a7879b3f6416024f</defaultValue>
+		</requiredProperty>
+
+		<requiredProperty key="dmoeAnnotationProductName">
+			<defaultValue>IBM Decision Manager Open Edition</defaultValue>
+		</requiredProperty>
+
+		<requiredProperty key="pamoeAnotationProductID">
 			<defaultValue>72984f114b54496a8a44be139154a988</defaultValue>
 		</requiredProperty>
 
-		<requiredProperty key="annotationProductName">
+		<requiredProperty key="pamoeAnnotationProductName">
 			<defaultValue>IBM Process Automation Manager Open Edition</defaultValue>
 		</requiredProperty>
 
@@ -227,7 +228,7 @@
 		</requiredProperty>
 
 		<requiredProperty key="bamoeVersion">
-			<defaultValue>9.2.1-ibm-0005</defaultValue>
+			<defaultValue>9.3.0-ibm-0007</defaultValue>
 		</requiredProperty>
 
 		<!-- BAMOE Runtimes -->
@@ -245,11 +246,28 @@
 		</requiredProperty>
 
 		<requiredProperty key="quarkusRuntimeVersion">
-			<defaultValue>3.20.1</defaultValue>
+			<defaultValue>3.20.2.2</defaultValue>
 		</requiredProperty>
 
 		<requiredProperty key="quarkusPlugin">
 			<defaultValue>quarkus-maven-plugin</defaultValue>
+		</requiredProperty>
+
+		<!-- Spring Boot Runtime -->
+		<requiredProperty key="springbootRuntimeGroupId">
+			<defaultValue>org.springframework.boot</defaultValue>
+		</requiredProperty>
+
+		<requiredProperty key="springbootRuntimeArtifactId">
+			<defaultValue>spring-boot-dependencies</defaultValue>
+		</requiredProperty>
+
+		<requiredProperty key="springbootRuntimeVersion">
+			<defaultValue>3.4.9</defaultValue>
+		</requiredProperty>
+
+		<requiredProperty key="springbootPlugin">
+			<defaultValue>spring-boot-maven-plugin</defaultValue>
 		</requiredProperty>
 
 		<!-- Sharable Fact Model -->
@@ -258,7 +276,7 @@
 		</requiredProperty>
 
 		<requiredProperty key="factModelGroupId">
-			<defaultValue>com.ibm.edu.bamoe</defaultValue>
+			<defaultValue>com.ibm.techsales.bamoe</defaultValue>
 		</requiredProperty>
 
 		<requiredProperty key="factModelArtifactId">
@@ -293,7 +311,7 @@
 		</requiredProperty>
 
 		<requiredProperty key="dockerContainerImageGroup">
-			<defaultValue>bamoe-student-labs</defaultValue>
+			<defaultValue>bamoe-apps</defaultValue>
 		</requiredProperty>
 
 		<requiredProperty key="dockerContainerImageBuilder">
@@ -322,7 +340,7 @@
 		</requiredProperty>
 
 		<requiredProperty key="ocpContainerImageGroup">
-			<defaultValue>bamoe-student-labs</defaultValue>
+			<defaultValue>bamoe-apps</defaultValue>
 		</requiredProperty>
 
 		<requiredProperty key="ocpContainerImageBuilder">
@@ -330,7 +348,7 @@
 		</requiredProperty>
 
 		<requiredProperty key="ocpContainerImageRegistry">
-			<defaultValue>default-route-openshift-image-registry.apps-crc.testing</defaultValue>
+			<defaultValue>TODO: Replace with your container registry URL</defaultValue>
 		</requiredProperty>
 
 		<requiredProperty key="ocpDeploy">

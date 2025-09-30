@@ -28,7 +28,7 @@ Files.move(source, source.resolveSibling(".gitignore"));
 if (runtime == "quarkus") {
 
     // Remove any generated files that are not part of the runtime requirements
-    String fileToRemove = javaPackagePath + "/rules/" + applicationClassName + ".java";
+    String fileToRemove = javaPackagePath + "/" + applicationClassName + ".java";
     System.out.println("--> Deleting generated file: " + projectPath.resolve("src/main/java/" + fileToRemove));
     Files.deleteIfExists(projectPath.resolve("src/main/java/" + fileToRemove));
 } 

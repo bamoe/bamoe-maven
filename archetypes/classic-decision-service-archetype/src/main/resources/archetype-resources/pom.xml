@@ -30,7 +30,13 @@
 
 		<!-- BAMOE -->
 		<bamoe.version>${bamoeVersion}</bamoe.version>
+#if (${bamoeRuntime} == 'quarkus')
 		<bamoe.runtime.version>${quarkusRuntimeVersion}</bamoe.runtime.version>
+#end
+#if (${bamoeRuntime} == 'springboot')
+		<bamoe.runtime.version>${springbootRuntimeVersion}</bamoe.runtime.version>
+		<jakarta.version>2.0.1</jakarta.version>
+#end
 
 		<!-- Testing Properties -->
       	<skipTests>${skipTests}</skipTests>
@@ -46,6 +52,7 @@
 	<!-- Dependency Management -->
 	<dependencyManagement>
 		<dependencies>
+#if (${bamoeRuntime} == 'quarkus')
 			<!-- BAMOE Quarkus Runtime -->
 			<dependency>
 				<groupId>${quarkusRuntimeGroupId}</groupId>
@@ -54,6 +61,17 @@
 				<type>pom</type>
 				<scope>import</scope>
 			</dependency>
+#end
+#if (${bamoeRuntime} == 'springboot')
+			<!-- BAMOE Spring Boot Runtime -->
+			<dependency>
+				<groupId>${springbootRuntimeGroupId}</groupId>
+				<artifactId>${springbootRuntimeArtifactId}</artifactId>
+				<version>${bamoe.runtime.version}</version>
+				<type>pom</type>
+				<scope>import</scope>
+			</dependency>
+#end
 
 			<!-- BAMOE -->
 			<dependency>
@@ -82,8 +100,9 @@
 			<artifactId>${fact.model.artifactId}</artifactId>
 			<version>${fact.model.version}</version>
 		</dependency>
-#end
 
+#end
+#if (${bamoeRuntime} == 'quarkus')
 		<!-- Quarkus Dependencies -->
 		<dependency>
 			<groupId>io.quarkus</groupId>
@@ -109,6 +128,37 @@
 			<groupId>io.quarkus</groupId>
 			<artifactId>quarkus-arc</artifactId>
 		</dependency>
+
+		<dependency>
+			<groupId>io.quarkus</groupId>
+			<artifactId>quarkus-junit5</artifactId>
+			<scope>test</scope>
+		</dependency>
+#end
+#if (${bamoeRuntime} == 'springboot')
+		<!-- Spring Boot Dependencies -->
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-actuator</artifactId>
+		</dependency>
+
+		<dependency>
+			<groupId>org.drools</groupId>
+			<artifactId>drools-rules-spring-boot-starter</artifactId>
+		</dependency>
+
+		<dependency>
+			<groupId>jakarta.inject</groupId>
+			<artifactId>jakarta.inject-api</artifactId>
+			<version>${jakarta.version}</version>
+		</dependency> 
+
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-test</artifactId>
+			<scope>test</scope>
+		</dependency>
+#end
 
 		<!-- Classic Engine Support -->
 		<dependency>
@@ -159,12 +209,6 @@
 
 		<!-- Testing -->
 		<dependency>
-			<groupId>io.quarkus</groupId>
-			<artifactId>quarkus-junit5</artifactId>
-			<scope>test</scope>
-		</dependency>
-
-		<dependency>
 			<groupId>io.rest-assured</groupId>
 			<artifactId>rest-assured</artifactId>
 			<scope>test</scope>
@@ -184,11 +228,13 @@
             <activation>
                 <activeByDefault>true</activeByDefault>
             </activation>
-
+#if (${bamoeRuntime} == 'quarkus')
             <properties>
                 <quarkus.profile>dev</quarkus.profile>
             </properties>
+#end
         </profile>
+#if (${bamoeRuntime} == 'quarkus')
 
         <profile>
             <id>docker</id>
@@ -203,6 +249,8 @@
                 </dependency>
             </dependencies>
         </profile>
+#end
+#if (${bamoeRuntime} == 'quarkus')
 
         <profile>
             <id>openshift</id>
@@ -222,6 +270,7 @@
                 </dependency>
             </dependencies>
         </profile>
+#end
     </profiles>
 
 	<!-- Build Plugin Management -->
@@ -229,6 +278,7 @@
         <defaultGoal>install</defaultGoal>
         <finalName>${project.artifactId}</finalName>
         <plugins>
+#if (${bamoeRuntime} == 'quarkus')
             <plugin>
                 <groupId>${quarkusRuntimeGroupId}</groupId>
                 <artifactId>${quarkusPlugin}</artifactId>
@@ -243,6 +293,34 @@
                     </execution>
                 </executions>
             </plugin>
+#end
+#if (${bamoeRuntime} == 'springboot')
+			<plugin>
+				<groupId>org.kie.kogito</groupId>
+				<artifactId>kogito-maven-plugin</artifactId>
+                <version>${bamoe.version}</version>
+				<executions>
+					<execution>
+						<phase>compile</phase>
+						<goals>
+							<goal>generateModel</goal>
+						</goals>
+					</execution>
+				</executions>
+			</plugin>
+
+			<plugin>
+				<groupId>org.springframework.boot</groupId>
+				<artifactId>${springbootPlugin}</artifactId>
+				<executions>
+					<execution>
+						<goals>
+							<goal>repackage</goal>
+						</goals>
+					</execution>
+				</executions>
+			</plugin>
+#end
 
 			<plugin>
 				<groupId>org.jboss.jandex</groupId>

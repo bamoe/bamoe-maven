@@ -164,7 +164,6 @@
 		<!-- BAMOE -->
 		<requiredProperty key="bamoeSubscription">
 			<defaultValue>dmoe</defaultValue>
-<!--		<defaultValue>pamoe</defaultValue> -->
 		</requiredProperty>
 
 		<requiredProperty key="useILMT">
@@ -210,7 +209,6 @@
 		<!-- BAMOE Runtimes -->
 		<requiredProperty key="bamoeRuntime">
 			<defaultValue>quarkus</defaultValue>
-<!--		<defaultValue>springboot</defaultValue> -->
 		</requiredProperty>
 
 		<!-- Quarkus Runtime -->
