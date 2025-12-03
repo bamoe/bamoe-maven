@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<kmodule xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://www.drools.org/xsd/kmodule">
+    <kbase name="my-stateless-workflow" default="true" packages="*"> 
+      <ksession name="my-stateless-workflow-stateful"  type="stateful"  default="false"/> 
+      <ksession name="my-stateless-workflow-stateless" type="stateless" default="true" /> 
+    </kbase> 
+</kmodule>

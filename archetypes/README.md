@@ -1,5 +1,5 @@
 # IBM Business Automation Manager Open Editions (IBM BAMOE) - Maven Archetypes
-This repository contains custom [**Maven Archetypes**](https://maven.apache.org/guides/introduction/introduction-to-archetypes.html) for creating decision and process services based on [**IBM Business Automation Manager Open Edition**](https://www.ibm.com/docs/en/ibamoe/9.2.x) including legacy v8 as well as the latest cloud-native release of v9 (powered by Kogito).
+This repository contains custom [**Maven Archetypes**](https://maven.apache.org/guides/introduction/introduction-to-archetypes.html) for creating decision and process services based on [**IBM Business Automation Manager Open Edition**](https://www.ibm.com/docs/en/ibamoe/9.3.x), including embedded engine, classic-mode, and cloud-native mode (Kogito) features of v9.
 
 # Overview
 In short, Archetype is a Maven project template generation toolkit. An archetype is defined as an original pattern or model from which all other things of the same kind are made. The name fits as we are trying to provide a system that provides a consistent means of generating Maven projects. The archetype will help authors create Maven project templates for users, and provides users with the means to generate parameterized versions of those project templates.
@@ -8,33 +8,15 @@ In short, Archetype is a Maven project template generation toolkit. An archetype
 This is a multi-module repository, with the following modules:
 
 - [**Fact Model Archetype**](./fact-model-archetype) is an archetype that can create a reusable fact model project. 
-- [**Classic Decision Service Archetype**](./classic-decision-service-archetype) is an archetype that can create a DMOE (v9) classic decision service project. 
-- [**Decision Service Archetype**](./decision-service-archetype) is an archetype that can create a DMOE (v9) Kogito decision service project. 
-- [**STP Orchstration Service Archetype**](./stp-orchstration-service-archetype) is an archetype that can create a DMOE (v9) STP Orchestration service project. 
-- [**Process Service Archetype**](./process-service-archetype) is an archetype that can create a PAMOE (v9) stateful process service project. 
+- [**Embedded Engine Archetypes**](./embedded-archetypes) is a collection of archetypes which generate BAMOE projects that can be embedded into other Java applications. 
+- [**Business Service Archetypes**](./business-service-archetypes) is a collection of archetypes which generate BAMOE business service projects, which can be run as standalone Quarkus or Spring Boot applications, or compiled as a Kubernetes container image.
+- [**Scripts**](./scripts) is a collection of scripts which invoke the various archetypes.
 
 # How To Build 
 In order to build the archetypes, you must perform a Maven `build` of the repository.  This repository is built using `mvn clean install` by either the CI/CD pipeline or on a local developer workstation.  If deploying artifacts to an enterprise Maven repository, please use `mvn clean deploy`, which requires configuration of the `distributionManagement` section of your project's parent pom.xml.  
 
 # Using the Archetype from the Command Line via Scripts
-Once the archetype has been built and installed into the enterprise artifact repository, navigate to the project folder for which you would like to create the new project, and run one of the following scripts, which are located in the `scripts` folder of this repository:
-
-- **create-fact-model.sh <projectName>** - Generates a reusable fact-model project.
-- **create-quarkus-classic-decision-service.sh <projectName>>** - Generates a Quarkus v9 classic decision (DMOE) service project.
-- **create-springboot-classic-decision-service.sh <projectName>>** - Generates a Spring Boot v9 classic decision (DMOE) service project.
-- **create-quarkus-decision-service.sh <projectName>** - Generates a v9 Quarkus Kogito decision (DMOE) service project.
-- **create-springboot-decision-service.sh <projectName>** - Generates a Spring Boot v9 Kogito decision (DMOE) service project.
-- **create-quarkus-stp-service.sh <projectName>** - Generates a Quarkus v9 statess STP Orchestration (DMOE) service project.
-- **create-springboot-stp-service.sh <projectName>** - Generates a Spring Boot v9 statess STP Orchestration (DMOE) service project.
-- **create-quarkus-process-service.sh <projectName>>** - Generates a v9 Quarkus stateful process (PAMOE) service project.
-- **create-springboot-process-service.sh <projectName>>** - Generates a Spring Boot v9 stateful process (PAMOE) service project.
-
-> [!TIP]
-> You can always associate a sharable fact model as project dependency, by simply adding the following properties _(using -DpropertyName=value)_ to the archetype, as in the following exmaple:
->
-> ```shell
-> ./archetype-script-file.sh <my-project-name> "-DuseFactModel=true -DfactModelGroupId=com.ibm.edu.bamoe -DfactModelArtifactId=my-fact-model -DfactModelVersion=1.0.0-SNAPSHOT"
->```
+Once the archetype has been built and installed into the enterprise artifact repository, navigate to the project folder for which you would like to create the new project, and run one of the pre-defined scripts, which are located in the `scripts` folder of this repository.
 
 > [!IMPORTANT]  
 > Do not create a new project in the same working directory as the `bamoe-maven` repository was cloned into.  This will result in an incorrect Maven project file being generated.  Always create a separate folder to hold your BAMOE Maven projects!

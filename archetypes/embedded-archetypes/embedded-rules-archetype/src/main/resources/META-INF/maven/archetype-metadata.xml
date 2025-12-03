@@ -1,0 +1,235 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<archetype-descriptor xsi:schemaLocation="https://maven.apache.org/plugins/maven-archetype-plugin/archetype-descriptor/1.1.0 http://maven.apache.org/xsd/archetype-descriptor-1.1.0.xsd" name="barry-project-1" xmlns="https://maven.apache.org/plugins/maven-archetype-plugin/archetype-descriptor/1.1.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  	<fileSets>
+		<fileSet filtered="true" packaged="false" encoding="UTF-8">
+			<directory></directory>
+			<includes>
+				<include>gitignore</include>
+				<include>README.MD</include>
+				<include>**/*.md</include>
+				<include>LICENSE</include>
+				<include>pom.xml</include>
+			</includes>
+		</fileSet>
+
+		<fileSet filtered="true" packaged="false" encoding="UTF-8">
+			<directory>src/main/java</directory>
+			<includes>
+				<include>**/*.java</include>
+				<include>**/*.md</include>
+				<include>.gitkeep</include>
+				<include>.empty</include>
+			</includes>
+		</fileSet>
+
+		<fileSet filtered="true" packaged="false" encoding="UTF-8">
+			<directory>src/main/resources</directory>
+			<includes>
+				<include>**/*.properties</include>
+				<include>**/*.bpmn</include>
+				<include>**/*.bpmn2</include>
+				<include>**/*.drl</include>
+				<include>**/*.dmn</include>
+				<include>**/*.scesim</include>
+				<include>**/*.xml</include>
+				<include>**/*.md</include>
+				<include>.gitkeep</include>
+				<include>.empty</include>
+			</includes>
+		</fileSet>
+
+		<fileSet filtered="true" packaged="false" encoding="UTF-8">
+			<directory>src/main/resources/META-INF</directory>
+			<includes>
+				<include>**/*.xml</include>
+				<include>**/*.properties</include>
+				<include>**/*.md</include>
+				<include>.gitkeep</include>
+				<include>.empty</include>
+			</includes>
+		</fileSet>
+
+		<fileSet filtered="true" packaged="false" encoding="UTF-8">
+			<directory>src/main/resources/rules</directory>
+			<includes>
+				<include>**/*.properties</include>
+				<include>**/*.bpmn</include>
+				<include>**/*.bpmn2</include>
+				<include>**/*.drl</include>
+				<include>**/*.dmn</include>
+				<include>**/*.scesim</include>
+				<include>**/*.xml</include>
+				<include>**/*.md</include>
+				<include>.gitkeep</include>
+				<include>.empty</include>
+			</includes>
+		</fileSet>
+
+		<fileSet filtered="true" packaged="false" encoding="UTF-8">
+			<directory>src/test/java</directory>
+			<includes>
+				<include>**/*.java</include>
+				<include>**/*.md</include>
+				<include>.gitkeep</include>
+				<include>.empty</include>
+			</includes>
+		</fileSet>
+
+		<fileSet filtered="true" packaged="false" encoding="UTF-8">
+			<directory>src/test/resources</directory>
+			<includes>
+				<include>**/*.properties</include>
+				<include>**/*.xml</include>
+				<include>**/*.scesim</include>
+				<include>**/*.feature</include>
+				<include>**/*.md</include>
+				<include>.gitkeep</include>
+				<include>.empty</include>
+			</includes>
+		</fileSet>
+	</fileSets>
+
+	<requiredProperties>
+		<!-- BAMOE -->
+		<requiredProperty key="bamoeSubscription">
+			<defaultValue>dmoe</defaultValue>
+		</requiredProperty>
+
+		<requiredProperty key="useILMT">
+			<defaultValue>false</defaultValue>
+		</requiredProperty>
+
+		<requiredProperty key="bamoeGroupId">
+			<defaultValue>com.ibm.bamoe</defaultValue>
+		</requiredProperty>
+
+		<requiredProperty key="bamoeArtifactId">
+			<defaultValue>bamoe-bom</defaultValue>
+		</requiredProperty>
+
+		<requiredProperty key="bamoeVersion">
+			<defaultValue>9.3.0-ibm-0007</defaultValue>
+		</requiredProperty>
+
+		<!-- Project Level -->
+		<requiredProperty key="projectName">
+			<defaultValue>my-rules</defaultValue>
+		</requiredProperty>
+
+		<requiredProperty key="projectDescription">
+			<defaultValue>Embedded Ruleset</defaultValue>
+		</requiredProperty>
+
+		<requiredProperty key="groupId">
+			<defaultValue>org.myorg</defaultValue>
+		</requiredProperty>
+
+		<requiredProperty key="artifactId">
+			<defaultValue>my-rules</defaultValue>
+		</requiredProperty>
+
+		<requiredProperty key="version">
+			<defaultValue>1.0.0-SNAPSHOT</defaultValue>
+		</requiredProperty>
+
+		<requiredProperty key="packaging">
+			<defaultValue>jar</defaultValue>
+		</requiredProperty>
+
+		<requiredProperty key="skipTests">
+			<defaultValue>true</defaultValue>
+		</requiredProperty>
+
+		<requiredProperty key="mavenCompilerPluginVersion">
+			<defaultValue>3.10.1</defaultValue>
+		</requiredProperty>
+
+		<requiredProperty key="mavenCompilerParameters">
+			<defaultValue>true</defaultValue>
+		</requiredProperty>
+
+		<requiredProperty key="mavenResourcesPluginVersion">
+			<defaultValue>3.2.0</defaultValue>
+		</requiredProperty>
+
+		<requiredProperty key="mavenSurefirePluginVersion">
+			<defaultValue>3.0.0-M7</defaultValue>
+		</requiredProperty>
+
+		<requiredProperty key="javaVersion">
+			<defaultValue>21</defaultValue>
+		</requiredProperty>
+
+		<requiredProperty key="jandexVersion">
+			<defaultValue>1.2.1</defaultValue>
+		</requiredProperty>
+
+		<requiredProperty key="jakartaVersion">
+			<defaultValue>10.0.0</defaultValue>
+		</requiredProperty>
+
+		<requiredProperty key="sourceEncoding">
+			<defaultValue>UTF-8</defaultValue>
+		</requiredProperty>
+
+		<requiredProperty key="outputEncoding">
+			<defaultValue>UTF-8</defaultValue>
+		</requiredProperty>
+
+		<requiredProperty key="package">
+			<defaultValue>org.myorg</defaultValue>
+		</requiredProperty>
+
+		<requiredProperty key="javaPackage">
+			<defaultValue>org/myorg</defaultValue>
+		</requiredProperty>
+
+		<!-- BAMOE Engine Adaptors Addon -->
+		<requiredProperty key="useEngineAdaptors">
+			<defaultValue>true</defaultValue>
+		</requiredProperty>
+
+		<requiredProperty key="engineAdaptorsGroupId">
+			<defaultValue>com.ibm.bamoe.engine.adaptors</defaultValue>
+		</requiredProperty>
+
+		<requiredProperty key="engineAdaptorsArtifactId">
+			<defaultValue>bamoe-engine-adaptors</defaultValue>
+		</requiredProperty>
+
+		<requiredProperty key="engineAdaptorsVersion">
+			<defaultValue>1.0.0</defaultValue>
+		</requiredProperty>
+
+		<!-- Embedded Mode -->
+		<requiredProperty key="ruleSetClassName">
+			<defaultValue>MyRules</defaultValue>
+		</requiredProperty>
+
+		<!-- Sharable Fact Model -->
+		<requiredProperty key="useFactModel">
+			<defaultValue>false</defaultValue>
+		</requiredProperty>
+
+		<requiredProperty key="factModelGroupId">
+			<defaultValue>org.myorg</defaultValue>
+		</requiredProperty>
+
+		<requiredProperty key="factModelArtifactId">
+			<defaultValue>my-fact-model</defaultValue>
+		</requiredProperty>
+
+		<requiredProperty key="factModelVersion">
+			<defaultValue>1.0.0-SNAPSHOT</defaultValue>
+		</requiredProperty>
+
+		<!-- Logging -->
+		<requiredProperty key="loggingEnabled">
+			<defaultValue>false</defaultValue>
+		</requiredProperty>
+
+		<requiredProperty key="loggingLevel">
+			<defaultValue>WARN</defaultValue>
+		</requiredProperty>
+	</requiredProperties>
+</archetype-descriptor>

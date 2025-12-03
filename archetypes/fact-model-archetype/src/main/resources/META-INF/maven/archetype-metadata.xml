@@ -67,7 +67,7 @@
 	<!-- These properties are required -->
 	<requiredProperties>
 		<requiredProperty key="projectName">
-			<defaultValue>untitled</defaultValue>
+			<defaultValue>my-fact-model</defaultValue>
 		</requiredProperty>
 
 		<requiredProperty key="projectDescription">
@@ -75,7 +75,7 @@
 		</requiredProperty>
 
 		<requiredProperty key="groupId">
-			<defaultValue>com.ibm.edu.bamoe</defaultValue>
+			<defaultValue>org.myorg</defaultValue>
 		</requiredProperty>
 
 		<requiredProperty key="artifactId">
@@ -91,11 +91,11 @@
 		</requiredProperty>
 
 		<requiredProperty key="javaPackage">
-			<defaultValue>com/ibm/techsales/bamoe</defaultValue>
+			<defaultValue>org/myorg</defaultValue>
 		</requiredProperty>
 
 		<requiredProperty key="package">
-			<defaultValue>com.ibm.techsales.bamoe</defaultValue>
+			<defaultValue>org.myorg</defaultValue>
 		</requiredProperty>
 
 		<requiredProperty key="sampleClassName">
@@ -119,7 +119,7 @@
 		</requiredProperty>
 
 		<requiredProperty key="javaVersion">
-			<defaultValue>17</defaultValue>
+			<defaultValue>21</defaultValue>
 		</requiredProperty>
 
 		<requiredProperty key="sourceEncoding">
