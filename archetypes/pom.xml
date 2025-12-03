@@ -2,37 +2,22 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 
-	<groupId>com.ibm.edu.bamoe.maven.archetypes</groupId>
+	<groupId>com.ibm.bamoe.maven.archetypes</groupId>
 	<artifactId>bamoe-archetypes</artifactId>
-	<version>1.0.0</version>
+	<version>9.3.0-ibm-0007</version>
 	<packaging>pom</packaging>
 
 	<modules>
 		<module>fact-model-archetype</module>
-		<module>decision-service-archetype</module>
-		<module>classic-decision-service-archetype</module>
-		<module>stp-service-archetype</module>
-		<module>process-service-archetype</module>
+		<module>embedded-archetypes</module>
+		<module>business-service-archetypes</module>
 	</modules>
 
 	<properties>
-		<archetype-packaging.version>3.3.1</archetype-packaging.version>
-		<maven-archetype-plugin.version>3.3.1</maven-archetype-plugin.version>
-		<maven-resources-plugin.version>3.3.1</maven-resources-plugin.version>
+		<archetype-packaging.version>3.4.1</archetype-packaging.version>
+		<maven-archetype-plugin.version>3.4.1</maven-archetype-plugin.version>
+		<maven-resources-plugin.version>3.4.1</maven-resources-plugin.version>
 	</properties>
-
-	<profiles>
-        <profile>
-            <id>development</id>
-            <activation>
-                <activeByDefault>true</activeByDefault>
-            </activation>
-
-            <properties>
-                <quarkus.profile>dev</quarkus.profile>
-            </properties>
-        </profile>
-	</profiles>
 
 	<build>
 		<extensions>
