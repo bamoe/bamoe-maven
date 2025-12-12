@@ -103,11 +103,11 @@
 	<requiredProperties>
 		<!-- Project Level -->
 		<requiredProperty key="projectName">
-			<defaultValue>my-business-service</defaultValue>
+			<defaultValue>my-process-service</defaultValue>
 		</requiredProperty>
 
 		<requiredProperty key="projectDescription">
-			<defaultValue>BAMOE Business Service</defaultValue>
+			<defaultValue>Stateful Process Business Service</defaultValue>
 		</requiredProperty>
 
 		<requiredProperty key="groupId">
@@ -115,7 +115,7 @@
 		</requiredProperty>
 
 		<requiredProperty key="artifactId">
-			<defaultValue>my-business-service</defaultValue>
+			<defaultValue>my-process-service</defaultValue>
 		</requiredProperty>
 
 		<requiredProperty key="version">
@@ -130,7 +130,6 @@
 			<defaultValue>true</defaultValue>
 		</requiredProperty>
 
-		<!-- Maven -->
 		<requiredProperty key="mavenCompilerPluginVersion">
 			<defaultValue>3.10.1</defaultValue>
 		</requiredProperty>
@@ -147,7 +146,6 @@
 			<defaultValue>3.0.0-M7</defaultValue>
 		</requiredProperty>
 
-		<!-- Java -->
 		<requiredProperty key="javaVersion">
 			<defaultValue>21</defaultValue>
 		</requiredProperty>
@@ -172,21 +170,8 @@
 			<defaultValue>org/myorg</defaultValue>
 		</requiredProperty>
 
-		<!-- Container Images -->
-		<requiredProperty key="jkubeVersion">
-			<defaultValue>1.18.1</defaultValue>
-		</requiredProperty>
-
-		<requiredProperty key="jkubeUseDeployments">
-			<defaultValue>true</defaultValue>
-		</requiredProperty>
-
-		<requiredProperty key="containerRouteType">
-			<defaultValue>edge</defaultValue>
-		</requiredProperty>
-
-		<requiredProperty key="containerBaseImage">
-			<defaultValue>ubi9/openjdk-21</defaultValue>
+		<requiredProperty key="processName">
+			<defaultValue>my-process</defaultValue>
 		</requiredProperty>
 
 		<!-- BAMOE -->
@@ -194,19 +179,19 @@
 			<defaultValue>false</defaultValue>
 		</requiredProperty>
 
-		<requiredProperty key="bamoeProduct">
+		<requiredProperty key="annotationProductID">
 			<defaultValue>72984f114b54496a8a44be139154a988</defaultValue>
 		</requiredProperty>
 
-		<requiredProperty key="bamoeProductName">
+		<requiredProperty key="annotationProductName">
 			<defaultValue>IBM Process Automation Manager Open Edition</defaultValue>
 		</requiredProperty>
 
-		<requiredProperty key="bamoeProductMetric">
+		<requiredProperty key="annotationProductMetric">
 			<defaultValue>VIRTUAL_PROCESSOR_CORE</defaultValue>
 		</requiredProperty>
 
-		<requiredProperty key="bamoeProductChargedContainers">
+		<requiredProperty key="annotationProductChargedContainers">
 			<defaultValue>All</defaultValue>
 		</requiredProperty>
 
@@ -219,12 +204,7 @@
 		</requiredProperty>
 
 		<requiredProperty key="bamoeVersion">
-			<defaultValue>9.3.0-ibm-0007</defaultValue>
-		</requiredProperty>
-
-		<!-- Generated Artifacts -->
-		<requiredProperty key="processName">
-			<defaultValue>my-process</defaultValue>
+			<defaultValue>9.2.1-ibm-0005</defaultValue>
 		</requiredProperty>
 
 		<!-- BAMOE Runtimes -->
@@ -242,20 +222,11 @@
 		</requiredProperty>
 
 		<requiredProperty key="quarkusRuntimeVersion">
-			<defaultValue>3.20.2.2</defaultValue>
+			<defaultValue>3.20.1</defaultValue>
 		</requiredProperty>
 
-		<!-- Spring Boot Runtime -->
-		<requiredProperty key="sbRuntimeGroupId">
-			<defaultValue>org.springframework.boot</defaultValue>
-		</requiredProperty>
-
-		<requiredProperty key="sbRuntimeArtifactId">
-			<defaultValue>spring-boot-dependencies</defaultValue>
-		</requiredProperty>
-
-		<requiredProperty key="sbRuntimeVersion">
-			<defaultValue>3.4.9</defaultValue>
+		<requiredProperty key="quarkusPlugin">
+			<defaultValue>quarkus-maven-plugin</defaultValue>
 		</requiredProperty>
 
 		<!-- Sharable Fact Model -->
@@ -280,12 +251,8 @@
 			<defaultValue>false</defaultValue>
 		</requiredProperty>
 
-		<requiredProperty key="devLoggingLevel">
-			<defaultValue>INFO</defaultValue>
-		</requiredProperty>
-
-		<requiredProperty key="prodLoggingLevel">
-			<defaultValue>ERROR</defaultValue>
+		<requiredProperty key="loggingLevel">
+			<defaultValue>WARN</defaultValue>
 		</requiredProperty>
 
 		<!-- Swagger -->
@@ -294,10 +261,6 @@
 		</requiredProperty>
 
 		<!-- Dev Profile -->
-		<requiredProperty key="devHttpPort">
-			<defaultValue>8081</defaultValue>
-		</requiredProperty>
-
 		<requiredProperty key="devFlywayEnabled">
 			<defaultValue>true</defaultValue>
 		</requiredProperty>
@@ -324,6 +287,35 @@
 
 		<requiredProperty key="devUserGroups">
 			<defaultValue>admin,HR,IT</defaultValue>
+		</requiredProperty>
+
+		<!-- Docker Profile -->
+		<requiredProperty key="dockerContainerImageBuild">
+			<defaultValue>true</defaultValue>
+		</requiredProperty>
+
+		<requiredProperty key="dockerContainerImagePush">
+			<defaultValue>false</defaultValue>
+		</requiredProperty>
+
+		<requiredProperty key="dockerContainerImageGroup">
+			<defaultValue>bamoe-apps</defaultValue>
+		</requiredProperty>
+
+		<requiredProperty key="dockerContainerImageBuilder">
+			<defaultValue>jib</defaultValue>
+		</requiredProperty>
+
+		<requiredProperty key="dockerContainerImageRegistry">
+			<defaultValue>dev.local</defaultValue>
+		</requiredProperty>
+
+		<requiredProperty key="dockerHostPort">
+			<defaultValue>8080</defaultValue>
+		</requiredProperty>
+
+		<requiredProperty key="dockerContainerPort">
+			<defaultValue>8080</defaultValue>
 		</requiredProperty>
 
 		<!-- OpenShift Profile -->

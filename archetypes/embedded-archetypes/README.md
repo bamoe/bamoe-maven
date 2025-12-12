@@ -6,7 +6,6 @@ This is a multi-module repository, with the following modules:
 
 - [**Embedded Rules Archetype**](./embedded-rules-archetype) is an archetype that can create an embedded rules (DRL, XLS) project that can be embedded into a Java application. 
 - [**Embedded Decision Model Archetype**](./embedded-decision-model-archetype) is an archetype that can create an embedded decision model (DMN) project that can be embedded into a Java application. 
-- [**Embedded Stateless Workflow Archetype**](./embedded-stateless-workflow-archetype) is an archetype that can create an embedded stateless (BPMN) workflow project that can be embedded into a Java application. 
 
 > [!IMPORTANT]  
 > Do not create a new project in the same working directory as the `bamoe-maven` repository was cloned into.  This will result in an incorrect Maven project file being generated.  Always create a separate folder to hold your BAMOE Maven projects!

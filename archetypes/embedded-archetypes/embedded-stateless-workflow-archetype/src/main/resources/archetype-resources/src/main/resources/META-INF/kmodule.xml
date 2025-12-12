@@ -1,7 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<kmodule xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://www.drools.org/xsd/kmodule">
-    <kbase name="${artifactId}" default="true" packages="*"> 
-      <ksession name="${artifactId}-stateful"  type="stateful"  default="false"/> 
-      <ksession name="${artifactId}-stateless" type="stateless" default="true" /> 
-    </kbase> 
-</kmodule>

@@ -4,11 +4,9 @@ This repository contains custom [**Maven Archetypes**](https://maven.apache.org/
 # Repository Modules
 This is a multi-module repository, with the following modules:
 
-- [**Business Service Archetype**](./business-service-archetype) is an archetype that can create a complete business service that supports stateful processes, rules, and decision models, using either the Quarkus or Spring Boot associated runtimes. 
-- [**Stateful Process Business Service Archetype**](./stateful-process-business-service-archetype) is an archetype that can create a stateful process business service, using either the Quarkus or Spring Boot associated runtimes. 
-- [**Stateless Process Business Service Archetype**](./stateless-process-business-service-archetype) is an archetype that can create a stateless process business service, using either the Quarkus or Spring Boot associated runtimes. 
-- [**Rules Business Service Archetype**](./rules-business-service-archetype) is an archetype that can create a stateless rules (DRL, XLS) business service, using either the Quarkus or Spring Boot associated runtimes. 
-- [**Decision Model Business Service Archetype**](./decision-model-business-service-archetype) is an archetype that can create a decision model (DMN) business service, using either the Quarkus or Spring Boot associated runtimes. 
+- [**Business Service Archetype**](./business-service-archetype) is an archetype that can create a complete business service that supports stateful processes, stateless rules and decision models, using either the Quarkus or Spring Boot associated runtimes. 
+- [**Stateful Business Service Archetype**](./stateful-business-service-archetype) is an archetype that can create a stateful business service, using either the Quarkus or Spring Boot associated runtimes. 
+- [**Stateless Business Service Archetype**](./stateless-business-service-archetype) is an archetype that can create a stateless business service, using either the Quarkus or Spring Boot associated runtimes. 
 
 > [!IMPORTANT]  
 > Do not create a new project in the same working directory as the `bamoe-maven` repository was cloned into.  This will result in an incorrect Maven project file being generated.  Always create a separate folder to hold your BAMOE Maven projects!

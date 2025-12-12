@@ -34,8 +34,16 @@
 		<bamoe.runtime.version>${quarkusRuntimeVersion}</bamoe.runtime.version>
 #end
 #if (${bamoeRuntime} == 'springboot')
-		<bamoe.runtime.version>${springbootRuntimeVersion}</bamoe.runtime.version>
+		<bamoe.runtime.version>${sbRuntimeVersion}</bamoe.runtime.version>
 #end
+		<bamoe.product>${bamoeProduct}</bamoe.product>
+		<bamoe.product.name>${bamoeProductName}</bamoe.product.name>
+
+		<!-- Container Images -->
+		<jkube.version>${jkubeVersion}</jkube.version>
+		<jkube.useDeployments>${jkubeUseDeployments}</jkube.useDeployments>
+		<jkube.route.type>${containerRouteType}</jkube.route.type>
+		<jkube.base.image>${containerBaseImage}</jkube.base.image>
 
 		<!-- Testing Properties -->
       	<skipTests>${skipTests}</skipTests>
@@ -64,8 +72,8 @@
 #if (${bamoeRuntime} == 'springboot')
 			<!-- BAMOE Spring Boot Runtime -->
 			<dependency>
-				<groupId>${springbootRuntimeGroupId}</groupId>
-				<artifactId>${springbootRuntimeArtifactId}</artifactId>
+				<groupId>${sbRuntimeGroupId}</groupId>
+				<artifactId>${sbRuntimeArtifactId}</artifactId>
 				<version>${bamoe.runtime.version}</version>
 				<type>pom</type>
 				<scope>import</scope>
@@ -235,6 +243,92 @@
 #end
 #if (${bamoeRuntime} == 'springboot')
 		<!-- Spring Boot Dependencies -->
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-actuator</artifactId>
+		</dependency>
+
+        <dependency>
+            <groupId>org.jbpm</groupId>
+            <artifactId>jbpm-with-drools-spring-boot-starter</artifactId>
+        </dependency>
+
+        <!-- Persistence -->
+        <dependency>
+            <groupId>org.kie</groupId>
+            <artifactId>kie-addons-springboot-persistence-jdbc</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>org.jbpm</groupId>
+            <artifactId>jbpm-addons-springboot-usertask-storage-jpa</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-jdbc</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>org.postgresql</groupId>
+            <artifactId>postgresql</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>org.flywaydb</groupId>
+            <artifactId>flyway-database-postgresql</artifactId>
+        </dependency>
+
+        <!-- Add ons -->
+        <dependency>
+            <groupId>org.kie</groupId>
+            <artifactId>kie-addons-springboot-process-management</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>org.kie</groupId>
+            <artifactId>kie-addons-springboot-process-svg</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>org.kie</groupId>
+            <artifactId>kie-addons-springboot-source-files</artifactId>
+        </dependency>
+
+        <!-- Data Index -->
+        <dependency>
+            <groupId>org.kie</groupId>
+            <artifactId>kogito-addons-springboot-data-index-jpa</artifactId>
+        </dependency>
+
+        <!-- Data Audit -->
+        <dependency>
+            <groupId>org.kie</groupId>
+            <artifactId>kogito-addons-springboot-data-audit</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>org.kie</groupId>
+            <artifactId>kogito-addons-springboot-data-audit-jpa</artifactId>
+        </dependency>
+
+        <!-- Jobs Service -->
+        <dependency>
+            <groupId>org.kie</groupId>
+            <artifactId>kogito-addons-springboot-embedded-jobs</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>org.kie</groupId>
+            <artifactId>kogito-addons-springboot-embedded-jobs-jpa</artifactId>
+        </dependency>
+
+		<!-- Testing -->
+		<dependency>
+      		<groupId>org.springframework.boot</groupId>
+      		<artifactId>spring-boot-starter-test</artifactId>
+      		<scope>test</scope>
+    	</dependency>
 #end
 
 		<!-- Testing -->
@@ -250,6 +344,219 @@
 			<scope>test</scope>
 		</dependency>
 	</dependencies>
+
+	<!-- Profiles -->
+   	<profiles>
+		<!-- Profile: DEV - This profile provides the supported dependencies and properties for running this buisness service locally using Dev mode, including a standalone (transient) persistence database -->
+        <profile>
+            <id>dev</id><activation><activeByDefault>true</activeByDefault></activation>
+            <properties>
+#if (${bamoeRuntime} == 'quarkus')
+                <quarkus.profile>dev</quarkus.profile>
+#end
+#if (${bamoeRuntime} == 'springboot')
+                <spring.profiles.active>dev</spring.profiles.active>
+#end
+            </properties>
+
+            <dependencies>
+#if (${bamoeRuntime} == 'quarkus')
+				<dependency>
+					<groupId>io.quarkus</groupId>
+					<artifactId>quarkus-jdbc-h2</artifactId>
+				</dependency>
+
+				<dependency>
+					<groupId>com.ibm.bamoe</groupId>
+					<artifactId>bamoe-quarkus-devui</artifactId>
+				</dependency>
+#end
+#if (${bamoeRuntime} == 'springboot')
+                <dependency>
+                    <groupId>com.h2database</groupId>
+                    <artifactId>h2</artifactId>
+                </dependency>
+#end
+            </dependencies>
+        </profile>
+
+		<!-- Profile: OpenShift - This profile provides the supported dependencies and properties for building and deploying the business service as a container image, specifically for Red Hat OpenShift-->
+        <profile>
+            <id>openshift</id>
+            <properties>
+                <spring.profiles.active>prod</spring.profiles.active>
+
+				<!-- Container Images -->
+				<eclipse-jkube.version>${jkube.version}</eclipse-jkube.version>
+				<jkube.build.switchToDeployment>${jkube.useDeployments}</jkube.build.switchToDeployment>
+				<jkube.enricher.jkube-openshift-route.tlsTermination>${jkube.route.type}</jkube.enricher.jkube-openshift-route.tlsTermination>
+				<jkube.container-image.from>${jkube.base.image}</jkube.container-image.from>
+            </properties>
+
+			<build>
+				<defaultGoal>install</defaultGoal>
+				<finalName>${project.artifactId}</finalName>
+
+				<resources>
+					<resource>
+						<directory>src/main/resources</directory>
+						<filtering>true</filtering>
+					</resource>
+				</resources>
+#if (${bamoeRuntime} == 'quarkus')
+
+				<dependencies>
+					<dependency>
+						<groupId>io.quarkus</groupId>
+						<artifactId>quarkus-jdbc-postgresql</artifactId>
+					</dependency>
+				</dependencies>
+#end
+
+				<plugins>
+					<plugin>
+						<groupId>org.eclipse.jkube</groupId>
+						<artifactId>openshift-maven-plugin</artifactId>
+						<version>${eclipse-jkube.version}</version>
+						<configuration>
+							<resources>
+								<annotations>
+									<!-- IBM License Service Annotations (pod level) -->
+									<pod>
+										<property>
+											<name>productID</name>
+											<value>${bamoe.product}</value>
+										</property>
+										<property>
+											<name>productName</name>
+											<value>${bamoe.product.name}</value>
+										</property>
+										<property>
+											<name>productMetric</name>
+											<value>VIRTUAL_PROCESSOR_CORE</value>
+										</property>
+										<property>
+											<name>productChargedContainers</name>
+											<value>All</value>
+										</property>
+									</pod>
+								</annotations>
+							</resources>
+						</configuration>
+						<executions>
+							<execution>
+								<id>jkube</id>
+								<goals>
+									<goal>resource</goal>
+									<goal>build</goal>
+									<goal>apply</goal>
+									<goal>deploy</goal>
+								</goals>
+							</execution>
+						</executions>
+					</plugin>
+				</plugins>
+			</build>
+        </profile>
+    </profiles>
+
+	<!-- Common Build Profiles -->
+	<build>
+		<defaultGoal>install</defaultGoal>
+		<finalName>${project.artifactId}</finalName>
+
+		<resources>
+			<resource>
+				<directory>src/main/resources</directory>
+				<filtering>true</filtering>
+			</resource>
+		</resources>
+
+		<plugins>
+#if (${bamoeRuntime} == 'quarkus')
+			<plugin>
+				<groupId>io.quarkus</groupId>
+				<artifactId>quarkus-maven-plugin</artifactId>
+				<version>${bamoe.runtime.version}</version>
+				<executions>
+					<execution>
+						<goals>
+							<goal>build</goal>
+							<goal>generate-code</goal>
+							<goal>generate-code-tests</goal>
+						</goals>
+					</execution>
+				</executions>
+			</plugin>
+#end
+#if (${bamoeRuntime} == 'springboot')
+			<plugin>
+				<groupId>org.kie.kogito</groupId>
+				<artifactId>kogito-maven-plugin</artifactId>
+				<version>${bamoe.version}</version>
+				<executions>
+					<execution>
+						<phase>compile</phase>
+						<goals>
+							<goal>generateModel</goal>
+						</goals>
+					</execution>
+				</executions>
+			</plugin>
+
+			<plugin>
+				<groupId>org.springframework.boot</groupId>
+				<artifactId>spring-boot-maven-plugin</artifactId>
+				<executions>
+					<execution>
+						<goals>
+							<goal>repackage</goal>
+						</goals>
+					</execution>
+				</executions>
+			</plugin>
+#end
+
+			<plugin>
+				<groupId>org.jboss.jandex</groupId>
+				<artifactId>jandex-maven-plugin</artifactId>
+				<version>${jandex-maven-plugin.version}</version>
+				<executions>
+					<execution>
+						<id>make-index</id>
+						<goals>
+							<goal>jandex</goal>
+						</goals>
+					</execution>
+				</executions>
+			</plugin>
+
+			<plugin>
+				<artifactId>maven-antrun-plugin</artifactId>
+				<executions>
+					<execution>
+						<phase>package</phase>
+						<goals>
+							<goal>run</goal>
+						</goals>
+						<configuration>
+							<target>
+								<copy includeEmptyDirs="true" overwrite="true" failonerror="false" quiet="true" todir="./docker-compose/svg">
+									<fileset dir="target/classes/META-INF/processSVG/"/>
+								</copy>
+							</target>
+						</configuration>
+					</execution>
+				</executions>
+			</plugin>
+		</plugins>
+	</build>
+</project>
+
+
+
+
+
 
 	<!-- Profiles -->
    	<profiles>

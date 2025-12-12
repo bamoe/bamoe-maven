@@ -2,6 +2,6 @@
 	<modelVersion>4.0.0</modelVersion>
 
 	<groupId>com.ibm.bamoe.maven.archetypes</groupId>
-	<artifactId>bamoe-business-service-archetype</artifactId>
+	<artifactId>bamoe-stateless-business-service-archetype</artifactId>
 	<version>9.3.1-ibm-0006</version>
 </project>

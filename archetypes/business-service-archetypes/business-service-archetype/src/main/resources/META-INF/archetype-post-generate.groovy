@@ -31,4 +31,8 @@ if (runtime == "quarkus") {
     String fileToRemove = javaPackagePath + "/rules/" + applicationClassName + ".java";
     System.out.println("--> Deleting generated file: " + projectPath.resolve("src/main/java/" + fileToRemove));
     Files.deleteIfExists(projectPath.resolve("src/main/java/" + fileToRemove));
+
+    String propertyFileToRemove = javaPackagePath + "/rules/" + applicationClassName + ".java";
+    System.out.println("--> Deleting generated file: " + projectPath.resolve("src/main/java/" + fileToRemove));
+    Files.deleteIfExists(projectPath.resolve("src/main/java/" + fileToRemove));
 } 
