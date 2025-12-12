@@ -4,9 +4,6 @@
 
 	<groupId>com.ibm.bamoe.maven.accelerators</groupId>
 	<artifactId>bamoe-maven-accelerators</artifactId>
-	<version>9.3.0-ibm-0007</version>
+	<version>9.3.1-ibm-0006</version>
 	<packaging>pom</packaging>
-
-	<modules>
-	</modules>
 </project>

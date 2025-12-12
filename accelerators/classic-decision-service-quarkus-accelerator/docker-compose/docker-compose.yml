@@ -1,9 +1,0 @@
-services:
-
-  classic-decision-service-quarkus-accelerator:
-    container_name: classic-decision-service-quarkus-accelerator
-    image: dev.local/bamoe-apps/classic-decision-service-quarkus-accelerator:1.0.0-SNAPSHOT
-    ports:
-      - "8080:8080"
-    extra_hosts:
-      - "127.0.0.1:host-gateway"

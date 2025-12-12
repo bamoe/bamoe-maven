@@ -219,7 +219,7 @@
 		</requiredProperty>
 
 		<requiredProperty key="bamoeVersion">
-			<defaultValue>9.3.0-ibm-0007</defaultValue>
+			<defaultValue>9.3.1-ibm-0006</defaultValue>
 		</requiredProperty>
 
 		<!-- Generated Artifacts -->

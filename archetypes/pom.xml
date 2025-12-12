@@ -4,7 +4,7 @@
 
 	<groupId>com.ibm.bamoe.maven.archetypes</groupId>
 	<artifactId>bamoe-maven-archetypes</artifactId>
-	<version>9.3.0-ibm-0007</version>
+	<version>9.3.1-ibm-0006</version>
 	<packaging>pom</packaging>
 
 	<modules>
