@@ -8,8 +8,9 @@ In short, Archetype is a Maven project template generation toolkit. An archetype
 This is a multi-module repository, with the following modules:
 
 - [**Fact Model Archetype**](./fact-model-archetype) is an archetype that can create a reusable fact model project. 
-- [**Embedded Engine Archetypes**](./embedded-archetypes) is a collection of archetypes which generate BAMOE projects that can be embedded into other Java applications. 
-- [**Business Service Archetypes**](./business-service-archetypes) is a collection of archetypes which generate BAMOE business service projects, which can be run as standalone Quarkus or Spring Boot applications, or compiled as a Kubernetes container image.
+- [**Embedded Rules Archetype**](./embedded-rules-archetype) is an archetype that can create an embedded rules (DRL, XLS) project that can be embedded into a Java application. 
+- [**Embedded Decision Model Archetype**](./embedded-decision-model-archetype) is an archetype that can create an embedded decision model (DMN) project that can be embedded into a Java application. 
+- [**Business Service Archetype**](./business-service-archetype) is an archetype that can create a complete business service that supports stateful processes, stateless rules and decision models, using either the Quarkus or Spring assoicated runtimes, packaged as a container image.
 - [**Scripts**](./scripts) is a collection of scripts which invoke the various archetypes.
 
 # How To Build 

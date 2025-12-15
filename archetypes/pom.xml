@@ -9,8 +9,9 @@
 
 	<modules>
 		<module>fact-model-archetype</module>
-		<module>embedded-archetypes</module>
-		<module>business-service-archetypes</module>
+		<module>embedded-rules-archetype</module>
+		<module>embedded-decision-model-archetype</module>
+		<module>business-service-archetype</module>
 	</modules>
 
 	<properties>
